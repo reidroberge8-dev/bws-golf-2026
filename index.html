@@ -810,20 +810,36 @@ document.getElementById('wifi-pw-disp').textContent = S.wifiPW || 'TBD';
 
 
 <script>
+/* ── VERSION CHECK: fetch version.txt on every load, reload if stale ── */
+(function() {
+  var VK = 'bws-ver';
+  fetch('./version.txt?t=' + Date.now(), {cache: 'no-store'})
+    .then(function(r) { return r.text(); })
+    .then(function(v) {
+      v = v.trim();
+      var last = localStorage.getItem(VK);
+      localStorage.setItem(VK, v);
+      if (last && last !== v) { window.location.reload(true); }
+    })
+    .catch(function() {});
+})();
+
 /* ── SERVICE WORKER ── */
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('./sw.js').then(function(reg) {
-      // New SW found: when it activates, reload for fresh content
-      reg.addEventListener('updatefound', function() {
-        var sw = reg.installing;
-        sw.addEventListener('statechange', function() {
-          if (sw.state === 'activated' && navigator.serviceWorker.controller) {
-            window.location.reload();
-          }
-        });
+  navigator.serviceWorker.register('./sw.js').then(function(reg) {
+    reg.addEventListener('updatefound', function() {
+      var sw = reg.installing;
+      sw.addEventListener('statechange', function() {
+        if (sw.state === 'activated' && navigator.serviceWorker.controller) {
+          window.location.reload(true);
+        }
       });
-    }).catch(function(e) { console.log('SW registration failed:', e); });
+    });
+  }).catch(function(e) { console.log('SW reg failed:', e); });
+
+  // When SW takes control (first install), reload for fresh content
+  navigator.serviceWorker.addEventListener('controllerchange', function() {
+    window.location.reload(true);
   });
 }
 
