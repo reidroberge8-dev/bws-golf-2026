@@ -522,9 +522,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 <div id="toast">Copied!</div>
 
-<div id="a2hs-banner">
-  <div class="a2hs-txt" id="a2hs-txt"><strong>BW&amp;S 2026</strong><br>Add to your Home Screen for quick access</div>
-
 <script>
 const PLAYERS = ['Reid','Matty','John','Simon','Richard','Joey','Aaron','Ryan'];
 const KEY = 'groton-golf-2026';
@@ -690,7 +687,7 @@ function updateScores() {
 
 
 /* ── A2HS ── */
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   const KEY = 'bws-a2hs-v2';   // v2 clears any old dismissal
   const banner = document.getElementById('a2hs-banner');
   const btn    = document.getElementById('a2hs-btn');
@@ -744,13 +741,16 @@ function updateScores() {
 
   close.addEventListener('click', dismiss);
   window.addEventListener('appinstalled', dismiss);
-})();
+});
 
 /* ── INIT ── */
 load();
 document.getElementById('wifi-ssid-disp').textContent = S.wifiSSID || 'TBD';
 document.getElementById('wifi-pw-disp').textContent = S.wifiPW || 'TBD';
 </script>
+
+<div id="a2hs-banner">
+  <div class="a2hs-txt" id="a2hs-txt"><strong>BW&amp;S 2026</strong><br>Add to your Home Screen for quick access</div>
   <button class="a2hs-btn" id="a2hs-btn">Add to Home Screen</button>
   <button class="a2hs-close" id="a2hs-close" aria-label="Dismiss">&#215;</button>
 </div>
