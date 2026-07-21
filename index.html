@@ -262,6 +262,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   border-top:1px solid rgba(245,208,100,.2);
   box-shadow:0 -2px 12px rgba(0,0,0,.25);}
 #a2hs-banner.show{transform:translateY(0);}
+.a2hs-on #content{bottom:calc(var(--nav-h) + 56px);}
 .a2hs-txt{flex:1;font-size:11px;line-height:1.45;color:rgba(255,255,255,.82);}
 .a2hs-txt strong{color:#f5d068;font-weight:700;}
 .a2hs-btn{background:linear-gradient(135deg,#f5d068,#f0a820);color:#1a0e04;
@@ -692,16 +693,36 @@ function updateScores() {
   const txt    = document.getElementById('a2hs-txt');
   let deferredPrompt = null;
 
+  // Already running as installed PWA, or user already dismissed — stay hidden
+  const isStandalone = (window.navigator.standalone === true) ||
+                       window.matchMedia('(display-mode: standalone)').matches;
+  if (isStandalone || localStorage.getItem(KEY)) return;
+
+  function show() {
+    banner.classList.add('show');
+    document.body.classList.add('a2hs-on');
+  }
+
   function dismiss() {
     localStorage.setItem(KEY, '1');
     banner.classList.remove('show');
+    document.body.classList.remove('a2hs-on');
   }
 
-  // Android / Chrome — native install prompt
+  // iOS Safari — no install prompt API, show share instructions
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+  if (isIOS) {
+    txt.innerHTML = '<strong>Add to Home Screen</strong><br>Tap the Share icon &#9651; then &ldquo;Add to Home Screen&rdquo;';
+    btn.style.display = 'none';
+  }
+
+  // Show immediately on load
+  show();
+
+  // Android / Chrome — native install prompt enables the button
   window.addEventListener('beforeinstallprompt', function(e) {
     e.preventDefault();
     deferredPrompt = e;
-    if (!localStorage.getItem(KEY)) banner.classList.add('show');
   });
 
   btn.addEventListener('click', async function() {
@@ -709,23 +730,12 @@ function updateScores() {
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
       deferredPrompt = null;
-      dismiss();
     }
+    dismiss();
   });
 
   close.addEventListener('click', dismiss);
-
-  // Fired after successful install on supported browsers
   window.addEventListener('appinstalled', dismiss);
-
-  // iOS Safari — no beforeinstallprompt, show manual instructions
-  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
-  const isStandalone = window.navigator.standalone === true;
-  if (isIOS && !isStandalone && !localStorage.getItem(KEY)) {
-    txt.innerHTML = '<strong>Add to Home Screen</strong><br>Tap the Share icon &#9651; then &ldquo;Add to Home Screen&rdquo;';
-    btn.style.display = 'none';
-    banner.classList.add('show');
-  }
 })();
 
 /* ── INIT ── */
