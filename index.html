@@ -56,14 +56,15 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .ht{font-size:16px;font-weight:800;letter-spacing:-.3px;
   background:linear-gradient(135deg,#f5d068 0%,#f9b530 50%,#f5d068 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hs{font-size:9.5px;color:rgba(245,208,100,.55);
+.hs{font-size:10.5px;color:rgba(245,208,100,.55);
   margin-top:2px;letter-spacing:.07em;text-transform:uppercase;}
 
 /* ── CONTENT ── */
 #content{position:fixed;top:var(--hdr-h);bottom:var(--nav-h);
   left:0;right:0;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--bg);}
 .pg{display:none;padding:14px 13px 6px;}
-.pg.on{display:block;}
+.pg.on{display:block;animation:pg-in .18s ease-out;}
+@keyframes pg-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── BOTTOM NAV ── */
 #nav{position:fixed;bottom:0;left:0;right:0;height:var(--nav-h);
@@ -85,7 +86,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .ctitle{font-size:10px;font-weight:700;text-transform:uppercase;
   letter-spacing:.07em;color:var(--muted);margin-bottom:10px;}
 .slabel{font-size:11px;font-weight:700;text-transform:uppercase;
-  letter-spacing:.07em;color:var(--muted);margin:16px 0 8px;padding-left:1px;}
+  letter-spacing:.07em;color:var(--muted);margin:10px 0 7px;padding-left:1px;}
 .note{font-size:11px;color:var(--muted);margin-top:-5px;margin-bottom:9px;padding-left:1px;}
 
 /* ── PILLS ── */
@@ -135,7 +136,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .fcc-arr{color:var(--muted);font-weight:400;}
 .fcc-detail{font-size:10px;color:var(--muted);margin-top:2px;}
 .track-link{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:#1a6fa8;color:#fff;text-decoration:none;white-space:nowrap;transition:opacity .15s;vertical-align:middle;margin-left:4px;}.track-link:hover{opacity:.82;}
-.track-link:hover{text-decoration:underline;}
 .fcc-pax{font-size:10px;color:var(--text2);text-align:right;max-width:100px;line-height:1.4;}
 
 /* ── TEAMS ── */
@@ -194,7 +194,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .dayhdr.off{background:linear-gradient(135deg,#6a2e08 0%,#a04010 100%);}
 .daytype.off{color:#fcd34d;}
 .rainout-note{font-size:11px;color:var(--muted);font-style:italic;margin-top:2px;}
-  .dnote{font-size:10px;color:var(--muted);margin-top:4px;font-style:italic;line-height:1.35;}
+  .dnote{font-size:10px;color:var(--amber);background:var(--amber-lt);margin-top:6px;padding:3px 8px;border-radius:6px;line-height:1.4;font-weight:600;display:inline-block;}
 .daybody{padding:10px 14px;background:var(--surface);}
 .drow{display:flex;gap:9px;align-items:flex-start;
   padding:6px 0;border-bottom:1px solid var(--border);}
@@ -203,7 +203,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .dcontent{flex:1;}
 .dlbl{font-size:10px;color:var(--muted);text-transform:uppercase;
   letter-spacing:.06em;font-weight:600;}
-.dval{font-size:12px;font-weight:500;color:var(--text2);margin-top:2px;line-height:1.4;}
+.dval{font-size:13px;font-weight:500;color:var(--text2);margin-top:2px;line-height:1.4;}
 .dval.tbd{color:var(--muted);font-style:italic;}
 
 /* ── RULES ── */
@@ -362,7 +362,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
       <span class="mapbtn-arr">&#8250;</span>
     </a>
     <a class="mapbtn" href="https://www.google.com/maps/search/940+Groton+Long+Point+Rd,+Groton,+CT+06340" target="_blank">
-      <span class="mapbtn-icon">&#128512;</span>
+      <span class="mapbtn-icon">&#128506;</span>
       <div><div class="mapbtn-main">Open in Google Maps</div><div class="mapbtn-sub">Tap for directions</div></div>
       <span class="mapbtn-arr">&#8250;</span>
     </a>
@@ -422,15 +422,15 @@ html,body{height:100%;background:var(--bg);color:var(--text);
       <div style="flex:1">
         <div class="tn-lbl blue">Team 1</div>
         <input id="tn-t1" type="text" placeholder="Team 1" maxlength="16"
-          style="width:100%;background:var(--bg);border:1px solid var(--blue-hi);border-radius:8px;
-          color:var(--blue-hi);font-size:14px;font-weight:700;padding:9px 10px"
+          style="width:100%;background:var(--bg);border:1px solid var(--blue);border-radius:8px;
+          color:var(--blue);font-size:14px;font-weight:700;padding:9px 10px"
           oninput="updateTeamNames()">
       </div>
       <div style="flex:1">
         <div class="tn-lbl red">Team 2</div>
         <input id="tn-t2" type="text" placeholder="Team 2" maxlength="16"
-          style="width:100%;background:var(--bg);border:1px solid var(--red-hi);border-radius:8px;
-          color:var(--red-hi);font-size:14px;font-weight:700;padding:9px 10px"
+          style="width:100%;background:var(--bg);border:1px solid var(--red);border-radius:8px;
+          color:var(--red);font-size:14px;font-weight:700;padding:9px 10px"
           oninput="updateTeamNames()">
       </div>
     </div>
@@ -463,31 +463,31 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   <div class="slabel">&#9971; Round Scores</div>
   <div class="score-card" id="sc-rounds">
     <div class="score-row">
-      <div class="score-day"><div>Golf Day 1 &mdash; Wed Aug 26</div><div class="score-sub">Meadow Brook</div></div>
+      <div class="score-day"><div>Golf Day 1 &mdash; Wed Aug 26</div><div class="score-sub">Meadow Brook &middot; 2 Man Scramble</div></div>
       <input class="score-inp blue" id="sc-d1t1" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
       <div style="font-size:10px;color:var(--muted);">vs</div>
       <input class="score-inp red" id="sc-d1t2" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
     </div>
     <div class="score-row">
-      <div class="score-day"><div>Golf Day 2 &mdash; Thu Aug 27</div><div class="score-sub">Stonington CC</div></div>
+      <div class="score-day"><div>Golf Day 2 &mdash; Thu Aug 27</div><div class="score-sub">Stonington CC &middot; Bodega</div></div>
       <input class="score-inp blue" id="sc-d2t1" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
       <div style="font-size:10px;color:var(--muted);">vs</div>
       <input class="score-inp red" id="sc-d2t2" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
     </div>
     <div class="score-row">
-      <div class="score-day"><div>Golf Day 3 &mdash; Fri Aug 28</div><div class="score-sub">Shenecossett GC</div></div>
+      <div class="score-day"><div>Golf Day 3 &mdash; Fri Aug 28</div><div class="score-sub">Shenecossett GC &middot; John Daly</div></div>
       <input class="score-inp blue" id="sc-d3t1" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
       <div style="font-size:10px;color:var(--muted);">vs</div>
       <input class="score-inp red" id="sc-d3t2" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
     </div>
-    <div class="score-row">
-      <div class="score-day"><div>Golf Day 4 &mdash; Sun Aug 30</div><div class="score-sub">Stonington CC</div></div>
+    <div class="score-row" style="opacity:.55;">
+      <div class="score-day"><div>Golf Day 4 &mdash; Sun Aug 30</div><div class="score-sub">Stonington CC &middot; 2v2 Match Play &nbsp;<span style="font-size:9px;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:.04em">Exhibition</span></div></div>
       <input class="score-inp blue" id="sc-d4t1" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
       <div style="font-size:10px;color:var(--muted);">vs</div>
       <input class="score-inp red" id="sc-d4t2" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
     </div>
     <div class="score-row">
-      <div class="score-day"><div>Golf Day 5 &mdash; Mon Aug 31</div><div class="score-sub">Meadow Brook</div></div>
+      <div class="score-day"><div>Golf Day 5 &mdash; Mon Aug 31</div><div class="score-sub">Meadow Brook &middot; Singles Matches</div></div>
       <input class="score-inp blue" id="sc-d5t1" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
       <div style="font-size:10px;color:var(--muted);">vs</div>
       <input class="score-inp red" id="sc-d5t2" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
@@ -673,12 +673,13 @@ function updateScores() {
     if (!S.scores[d]) S.scores[d] = {t1:'',t2:''};
     S.scores[d].t1 = document.getElementById('sc-'+d+'t1')?.value||'';
     S.scores[d].t2 = document.getElementById('sc-'+d+'t2')?.value||'';
-    t1 += v1; t2 += v2;
+    if (d !== 'd4') { t1 += v1; t2 += v2; }  // d4 = Sun exhibition, not counted
   });
   const d1 = document.getElementById('sc-t1total');
   const d2 = document.getElementById('sc-t2total');
-  if (d1) d1.textContent = t1 % 1 === 0 ? t1 : t1.toFixed(1);
-  if (d2) d2.textContent = t2 % 1 === 0 ? t2 : t2.toFixed(1);
+  const anyScore = DAYS.some(d => document.getElementById('sc-'+d+'t1')?.value || document.getElementById('sc-'+d+'t2')?.value);
+  if (d1) d1.textContent = anyScore ? (t1 % 1 === 0 ? t1 : t1.toFixed(1)) : '—';
+  if (d2) d2.textContent = anyScore ? (t2 % 1 === 0 ? t2 : t2.toFixed(1)) : '—';
   const n1 = document.getElementById('sc-t1name');
   const n2 = document.getElementById('sc-t2name');
   if (n1) n1.textContent = S.t1name;
