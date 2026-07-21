@@ -1,11 +1,7 @@
-/* BW&S 2026 — Service Worker: network-first, cache as offline fallback */
-const CACHE = 'bws-2026-v1';
-const PRECACHE = ['./', './index.html', './manifest.json', './BW%26S%20logo.jpg'];
+/* BW&S 2026 — Service Worker v2: always-fresh navigation */
+const CACHE = 'bws-2026-v2';
 
-self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)));
-  self.skipWaiting();
-});
+self.addEventListener('install', () => self.skipWaiting());
 
 self.addEventListener('activate', e => {
   e.waitUntil(
@@ -16,12 +12,24 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
+  // Navigation: always hit the network, bypassing HTTP cache — fall back to cache if offline
+  if (e.request.mode === 'navigate') {
+    e.respondWith(
+      fetch(e.request, { cache: 'no-cache' })
+        .then(r => {
+          caches.open(CACHE).then(c => c.put(e.request, r.clone()));
+          return r;
+        })
+        .catch(() => caches.match(e.request))
+    );
+    return;
+  }
+  // Assets: network first, cache fallback
   e.respondWith(
     fetch(e.request)
       .then(r => {
-        if (r && r.status === 200 && e.request.method === 'GET') {
+        if (r && r.status === 200 && e.request.method === 'GET')
           caches.open(CACHE).then(c => c.put(e.request, r.clone()));
-        }
         return r;
       })
       .catch(() => caches.match(e.request))
