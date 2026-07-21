@@ -257,21 +257,22 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .score-inp.red{border-color:var(--red);color:var(--red);}
 
 
-/* ── A2HS BANNER ── */
-#a2hs-banner{position:fixed;bottom:var(--nav-h);left:0;right:0;
-  background:linear-gradient(135deg,#071c0a 0%,#0e3018 100%);
-  padding:10px 14px;display:none;align-items:center;gap:10px;
-  z-index:98;border-top:2px solid rgba(245,208,100,.4);
-  box-shadow:0 -2px 12px rgba(0,0,0,.35);}
-#a2hs-banner.show{display:flex;}
-.a2hs-on #content{bottom:calc(var(--nav-h) + 56px);}
-.a2hs-txt{flex:1;font-size:11px;line-height:1.45;color:rgba(255,255,255,.82);}
-.a2hs-txt strong{color:#f5d068;font-weight:700;}
-.a2hs-btn{background:linear-gradient(135deg,#f5d068,#f0a820);color:#1a0e04;
-  border:none;border-radius:20px;padding:7px 13px;font-size:11px;font-weight:700;
-  cursor:pointer;white-space:nowrap;flex-shrink:0;font-family:inherit;}
-.a2hs-close{background:none;border:none;color:rgba(255,255,255,.5);
-  font-size:18px;cursor:pointer;padding:0 2px;flex-shrink:0;line-height:1;}
+/* ── A2HS BUTTON ── */
+#a2hs-bar{position:fixed;bottom:var(--nav-h);left:0;right:0;
+  display:none;justify-content:center;
+  padding:8px 14px 10px;
+  background:var(--surface);border-top:1px solid var(--border);
+  z-index:98;box-shadow:0 -1px 6px rgba(0,0,0,.08);}
+#a2hs-bar.show{display:flex;}
+.a2hs-on #content{bottom:calc(var(--nav-h) + 52px);}
+#a2hs-btn{background:linear-gradient(135deg,#f5d068,#f0a820);color:#1a0e04;
+  border:none;border-radius:24px;padding:11px 20px;
+  font-size:13px;font-weight:700;cursor:pointer;
+  font-family:inherit;width:100%;max-width:380px;
+  box-shadow:0 2px 8px rgba(240,168,32,.35);}
+#a2hs-btn:active{opacity:.85;}
+@keyframes bws-slide-up{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes bws-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
 
   .day-weather {
@@ -688,59 +689,112 @@ function updateScores() {
 
 /* ── A2HS ── */
 document.addEventListener('DOMContentLoaded', function(){
-  const KEY = 'bws-a2hs-v2';   // v2 clears any old dismissal
-  const banner = document.getElementById('a2hs-banner');
-  const btn    = document.getElementById('a2hs-btn');
-  const close  = document.getElementById('a2hs-close');
-  const txt    = document.getElementById('a2hs-txt');
-  let deferredPrompt = null;
+  var bar = document.getElementById('a2hs-bar');
+  var _prompt = null;
 
-  // Already running as installed PWA — never show
-  const isStandalone = (window.navigator.standalone === true) ||
-                       window.matchMedia('(display-mode: standalone)').matches;
+  var ua = navigator.userAgent;
+  var isStandalone = (window.navigator.standalone === true) ||
+                     window.matchMedia('(display-mode: standalone)').matches;
   if (isStandalone) return;
 
-  // User already dismissed on this device
-  if (localStorage.getItem(KEY)) return;
+  var isIOS    = /iPhone|iPad|iPod/.test(ua);
+  var isSafari = /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua);
 
-  function show() {
-    banner.classList.add('show');
+  // Android/Chrome: capture native install prompt
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    _prompt = e;
+    bar.classList.add('show');
+    document.body.classList.add('a2hs-on');
+  });
+
+  // iOS Safari (not already installed)
+  if (isIOS && isSafari) {
+    bar.classList.add('show');
     document.body.classList.add('a2hs-on');
   }
 
-  function dismiss() {
-    localStorage.setItem(KEY, '1');
-    banner.classList.remove('show');
-    document.body.classList.remove('a2hs-on');
+  var _modalEl = null;
+  function buildModal() {
+    if (_modalEl) return;
+    _modalEl = document.createElement('div');
+    _modalEl.innerHTML =
+      '<div id="bws-install-overlay" onclick="if(event.target===this)closeA2HS()" '
+      + 'style="position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;'
+      + 'display:none;align-items:flex-end;justify-content:center;padding-bottom:0">'
+      + '<div style="background:#fff;border-radius:20px 20px 0 0;padding:22px 20px 44px;'
+      + 'max-width:440px;width:100%;position:relative;animation:bws-slide-up 0.25s ease-out">'
+      // close button
+      + '<button onclick="closeA2HS()" style="position:absolute;top:12px;right:16px;'
+      + 'border:none;background:none;font-size:1.5em;color:#999;cursor:pointer;'
+      + 'line-height:1;padding:4px 8px;border-radius:50%">&#10005;</button>'
+      // header
+      + '<div style="text-align:center;margin-bottom:18px;padding-top:4px">'
+      + '<div style="font-size:1.3em;font-weight:900;color:#1a0e04;margin-bottom:5px">&#128242; Add to Home Screen</div>'
+      + '<div style="font-size:0.83em;color:#7a8aaa;line-height:1.4">Open BW&amp;S 2026 like a native app &mdash;<br>quick access, no browser chrome</div>'
+      + '</div>'
+      // steps
+      + '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px">'
+      // step 1
+      + '<div style="display:flex;align-items:center;gap:13px;background:#fdf8ee;'
+      + 'border-radius:12px;padding:12px 14px">'
+      + '<span style="font-size:1.5em;min-width:30px;text-align:center">1&#65039;&#8419;</span>'
+      + '<span style="font-size:0.88em;color:#334;line-height:1.4">Tap the '
+      + '<strong style="color:#b05800">Share</strong> button '
+      + '<span style="display:inline-block;border:1.5px solid #b05800;border-radius:4px;'
+      + 'padding:0 4px;font-size:1.1em;line-height:1.3;vertical-align:middle">&#11014;</span>'
+      + ' at the <strong>bottom</strong> of Safari</span>'
+      + '</div>'
+      // step 2
+      + '<div style="display:flex;align-items:center;gap:13px;background:#fdf8ee;'
+      + 'border-radius:12px;padding:12px 14px">'
+      + '<span style="font-size:1.5em;min-width:30px;text-align:center">2&#65039;&#8419;</span>'
+      + '<span style="font-size:0.88em;color:#334;line-height:1.4">Scroll down and tap '
+      + '<strong style="color:#b05800">&ldquo;Add to Home Screen&rdquo;</strong></span>'
+      + '</div>'
+      // step 3
+      + '<div style="display:flex;align-items:center;gap:13px;background:#fdf8ee;'
+      + 'border-radius:12px;padding:12px 14px">'
+      + '<span style="font-size:1.5em;min-width:30px;text-align:center">3&#65039;&#8419;</span>'
+      + '<span style="font-size:0.88em;color:#334;line-height:1.4">Tap '
+      + '<strong style="color:#b05800">&ldquo;Add&rdquo;</strong> in the top-right corner</span>'
+      + '</div>'
+      + '</div>'
+      // bounce arrow
+      + '<div style="text-align:center">'
+      + '<span style="font-size:2em;display:inline-block;animation:bws-bounce 1.1s ease-in-out infinite">&#11015;&#65039;</span>'
+      + '<div style="font-size:0.72em;color:#aab4cc;margin-top:4px">Share button is in the Safari toolbar below</div>'
+      + '</div>'
+      + '</div>'
+      + '</div>';
+    document.body.appendChild(_modalEl);
   }
 
-  // iOS Safari — show share icon instructions, hide install button
-  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
-  if (isIOS) {
-    txt.innerHTML = '<strong>BW&amp;S 2026</strong><br>Tap the Share icon then &ldquo;Add to Home Screen&rdquo;';
-    btn.style.display = 'none';
-  }
-
-  // Show on load
-  show();
-
-  // Android / Chrome: capture native install prompt to use when button is tapped
-  window.addEventListener('beforeinstallprompt', function(e) {
-    e.preventDefault();
-    deferredPrompt = e;
-  });
-
-  btn.addEventListener('click', async function() {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      deferredPrompt = null;
+  window.showA2HS = function() {
+    if (_prompt) {
+      _prompt.prompt();
+      _prompt.userChoice.then(function(r) {
+        _prompt = null;
+        if (r.outcome === 'accepted') {
+          bar.classList.remove('show');
+          document.body.classList.remove('a2hs-on');
+        }
+      });
+      return;
     }
-    dismiss();
-  });
+    buildModal();
+    document.getElementById('bws-install-overlay').style.display = 'flex';
+  };
 
-  close.addEventListener('click', dismiss);
-  window.addEventListener('appinstalled', dismiss);
+  window.closeA2HS = function() {
+    var ov = document.getElementById('bws-install-overlay');
+    if (ov) ov.style.display = 'none';
+  };
+
+  window.addEventListener('appinstalled', function() {
+    bar.classList.remove('show');
+    document.body.classList.remove('a2hs-on');
+  });
 });
 
 /* ── INIT ── */
@@ -749,10 +803,8 @@ document.getElementById('wifi-ssid-disp').textContent = S.wifiSSID || 'TBD';
 document.getElementById('wifi-pw-disp').textContent = S.wifiPW || 'TBD';
 </script>
 
-<div id="a2hs-banner">
-  <div class="a2hs-txt" id="a2hs-txt"><strong>BW&amp;S 2026</strong><br>Add to your Home Screen for quick access</div>
-  <button class="a2hs-btn" id="a2hs-btn">Add to Home Screen</button>
-  <button class="a2hs-close" id="a2hs-close" aria-label="Dismiss">&#215;</button>
+<div id="a2hs-bar">
+  <button id="a2hs-btn" onclick="showA2HS()">&#128242; Add BW&amp;S to Home Screen</button>
 </div>
 
 </body>
