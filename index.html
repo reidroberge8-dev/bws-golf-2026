@@ -117,27 +117,20 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .copybtn:active{opacity:.85;}
 
 /* ── FLIGHT CARDS ── */
-.fc{background:var(--surface);border:1px solid var(--border);
-  border-radius:10px;padding:13px 14px;margin-bottom:8px;
+.fc{display:flex;align-items:center;gap:10px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:8px;padding:8px 12px;margin-bottom:5px;
   box-shadow:var(--shadow);}
 .fc.arrival{border-left:3px solid var(--green);}
 .fc.departure{border-left:3px solid var(--red);}
-.fc.pending{border-left:3px solid var(--amber);}
-.fc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
-.fc-num{font-size:14px;font-weight:700;color:var(--text);}
-.fc-airline{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:2px;}
-.badge{display:inline-block;padding:2px 8px;border-radius:10px;
-  font-size:10px;font-weight:600;}
-.b-arr{background:var(--green-lt);color:var(--green);}
-.b-dep{background:var(--red-lt);color:var(--red);}
-.b-tbd{background:var(--amber-lt);color:var(--amber);}
-.fc-route{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
-.fc-ap{font-size:20px;font-weight:800;letter-spacing:-.5px;color:var(--text);}
-.fc-city{font-size:10px;color:var(--muted);margin-top:2px;}
-.fc-time{font-size:13px;font-weight:700;color:var(--text2);margin-top:1px;}
-.fc-arrow{flex:1;text-align:center;color:var(--muted);font-size:14px;}
-.fc-pax{font-size:12px;color:var(--text2);
-  border-top:1px solid var(--border);padding-top:8px;margin-top:2px;}
+.fcc-left{min-width:62px;}
+.fcc-num{font-size:12px;font-weight:700;color:var(--text);}
+.fcc-air{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:1px;}
+.fcc-mid{flex:1;}
+.fcc-route{font-size:13px;font-weight:700;color:var(--text);}
+.fcc-arr{color:var(--muted);font-weight:400;}
+.fcc-detail{font-size:10px;color:var(--muted);margin-top:2px;}
+.fcc-pax{font-size:10px;color:var(--text2);text-align:right;max-width:100px;line-height:1.4;}
 
 /* ── TEAMS ── */
 .team-row{display:flex;gap:8px;margin-bottom:4px;}
@@ -232,6 +225,26 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .course-link:hover{text-decoration:underline;}
 .course-link.tbd{color:var(--muted);font-weight:400;pointer-events:none;}
 .range-yes{color:var(--green);font-weight:600;}.range-no{color:var(--muted);}
+
+/* ── SCORES ── */
+.score-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:14px 15px;margin-bottom:9px;box-shadow:var(--shadow);}
+.score-overall{display:flex;align-items:center;justify-content:space-around;padding:8px 0 4px;}
+.score-team-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.score-big{font-size:42px;font-weight:800;line-height:1;letter-spacing:-1px;}
+.score-big.blue{color:var(--blue);}
+.score-big.red{color:var(--red);}
+.score-vs{font-size:13px;color:var(--muted);font-weight:600;}
+.score-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);}
+.score-row:last-child{border-bottom:none;}
+.score-day{flex:1;font-size:12px;font-weight:600;color:var(--text2);}
+.score-sub{font-size:10px;color:var(--muted);margin-top:1px;}
+.score-inp{width:44px;text-align:center;background:var(--surface2);border:1px solid var(--border2);
+  border-radius:6px;font-size:14px;font-weight:700;padding:5px 2px;color:var(--text);}
+.score-inp:focus{outline:none;border-color:var(--accent);}
+.score-inp.blue{border-color:var(--blue);color:var(--blue);}
+.score-inp.red{border-color:var(--red);color:var(--red);}
+
 </style>
 </head>
 <body>
@@ -324,69 +337,48 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 <div class="slabel">&#128748; Arrivals &mdash; Tuesday, August 25</div>
 
-  <div class="fc arrival">
-    <div class="fc-top"><div><div class="fc-num">DL 5632</div><div class="fc-airline">Delta</div></div><span class="badge b-arr">Arriving</span></div>
-    <div class="fc-route">
-      <div><div class="fc-ap">JAX</div><div class="fc-city">Jacksonville</div></div>
-      <div class="fc-arrow">&#9992;</div>
-      <div style="text-align:right"><div class="fc-ap">BOS</div><div class="fc-time">09:46</div></div>
-    </div>
-    <div class="fc-pax">&#128100; Matty</div>
-  </div>
+  <div class="fc arrival"><div class="fcc-left"><div class="fcc-num">DL 5632</div><div class="fcc-air">Delta</div></div><div class="fcc-mid"><div class="fcc-route">JAX <span class="fcc-arr">&#8594;</span> BOS</div><div class="fcc-detail">Arrives 09:46</div></div><div class="fcc-pax">&#128100; Matty</div></div>
 
-  <div class="fc arrival">
-    <div class="fc-top"><div><div class="fc-num">EI 133</div><div class="fc-airline">Aer Lingus</div></div><span class="badge b-arr">Arriving</span></div>
-    <div class="fc-route">
-      <div><div class="fc-ap">DUB</div><div class="fc-city">Dublin</div></div>
-      <div class="fc-arrow">&#9992;</div>
-      <div style="text-align:right"><div class="fc-ap">BOS</div><div class="fc-time">14:55</div></div>
-    </div>
-    <div class="fc-pax">&#128101; Simon, Ryan, Richard, Joey, Aaron</div>
-  </div>
+  <div class="fc arrival"><div class="fcc-left"><div class="fcc-num">EI 133</div><div class="fcc-air">Aer Lingus</div></div><div class="fcc-mid"><div class="fcc-route">DUB <span class="fcc-arr">&#8594;</span> BOS</div><div class="fcc-detail">Arrives 14:55</div></div><div class="fcc-pax">&#128101; Simon, Ryan, Richard, Joey, Aaron</div></div>
 
-  <div class="fc arrival">
-    <div class="fc-top"><div><div class="fc-num">AY 5645</div><div class="fc-airline">Finnair (codeshare IB347)</div></div><span class="badge b-arr">Arriving</span></div>
-    <div class="fc-route">
-      <div><div class="fc-ap">MAD</div><div class="fc-city">Madrid</div><div class="fc-time">13:50</div></div>
-      <div class="fc-arrow">&#9992;</div>
-      <div style="text-align:right"><div class="fc-ap">BOS</div><div class="fc-city">Boston</div><div class="fc-time">16:10</div></div>
-    </div>
-    <div class="fc-pax">&#128100; John</div>
-  </div>
+  <div class="fc arrival"><div class="fcc-left"><div class="fcc-num">AY 5645</div><div class="fcc-air">Finnair / IB347</div></div><div class="fcc-mid"><div class="fcc-route">MAD <span class="fcc-arr">&#8594;</span> BOS</div><div class="fcc-detail">Departs 13:50 &middot; Arrives 16:10</div></div><div class="fcc-pax">&#128100; John</div></div>
 
   <div class="slabel">&#128747; Departures &mdash; Tuesday, September 1</div>
 
-  <div class="fc departure">
-    <div class="fc-top"><div><div class="fc-num">DL 5657</div><div class="fc-airline">Delta</div></div><span class="badge b-dep">Departing</span></div>
-    <div class="fc-route">
-      <div><div class="fc-ap">BOS</div><div class="fc-time">15:20</div></div>
-      <div class="fc-arrow">&#9992;</div>
-      <div style="text-align:right"><div class="fc-ap">JAX</div><div class="fc-city">Jacksonville</div></div>
-    </div>
-    <div class="fc-pax">&#128100; Matty</div>
-  </div>
+  <div class="fc departure"><div class="fcc-left"><div class="fcc-num">DL 5657</div><div class="fcc-air">Delta</div></div><div class="fcc-mid"><div class="fcc-route">BOS <span class="fcc-arr">&#8594;</span> JAX</div><div class="fcc-detail">Departs 15:20</div></div><div class="fcc-pax">&#128100; Matty</div></div>
 
-  <div class="fc departure">
-    <div class="fc-top"><div><div class="fc-num">EI 132</div><div class="fc-airline">Aer Lingus</div></div><span class="badge b-dep">Departing</span></div>
-    <div class="fc-route">
-      <div><div class="fc-ap">BOS</div><div class="fc-time">17:25</div></div>
-      <div class="fc-arrow">&#9992;</div>
-      <div style="text-align:right"><div class="fc-ap">DUB</div><div class="fc-city">Dublin</div></div>
-    </div>
-    <div class="fc-pax">&#128101; Simon, Ryan, Richard, Joey, Aaron</div>
-  </div>
+  <div class="fc departure"><div class="fcc-left"><div class="fcc-num">EI 132</div><div class="fcc-air">Aer Lingus</div></div><div class="fcc-mid"><div class="fcc-route">BOS <span class="fcc-arr">&#8594;</span> DUB</div><div class="fcc-detail">Departs 17:25</div></div><div class="fcc-pax">&#128101; Simon, Ryan, Richard, Joey, Aaron</div></div>
 
-  <div class="fc departure">
-    <div class="fc-top"><div><div class="fc-num">AY 5370</div><div class="fc-airline">Finnair</div></div><span class="badge b-dep">Departing</span></div>
-    <div class="fc-route">
-      <div><div class="fc-ap">BOS</div><div class="fc-city">Boston</div><div class="fc-time">21:20</div></div>
-      <div class="fc-arrow">&#9992;</div>
-      <div style="text-align:right"><div class="fc-ap">MAD</div><div class="fc-city">Madrid</div><div class="fc-time">10:30 +1</div></div>
-    </div>
-    <div class="fc-pax">&#128100; John</div>
-  </div>
+  <div class="fc departure"><div class="fcc-left"><div class="fcc-num">AY 5370</div><div class="fcc-air">Finnair</div></div><div class="fcc-mid"><div class="fcc-route">BOS <span class="fcc-arr">&#8594;</span> MAD</div><div class="fcc-detail">Departs 21:20 &middot; Arrives 10:30 Sep 2</div></div><div class="fcc-pax">&#128100; John</div></div>
 
-  <div style="height:12px"></div>
+
+  <div class="slabel">&#128215; Rules &amp; Format</div>
+  <div class="card">
+    <div class="ctitle">&#129354; Ryder Cup Style</div>
+    <div class="irow"><div class="ilbl">Teams</div><div class="ival">2 teams of 4 players</div></div>
+    <div class="irow"><div class="ilbl">Scoring</div><div class="ival">Match play &mdash; points per match, not per stroke</div></div>
+    <div class="irow"><div class="ilbl">Result</div><div class="ival">Win = 1pt &nbsp;&middot;&nbsp; Half = &frac12;pt &nbsp;&middot;&nbsp; Loss = 0pts</div></div>
+    <div class="irow"><div class="ilbl">Handicap</div><div class="ival">TBD</div></div>
+  </div>
+  <div class="card">
+    <div class="ctitle">&#129309; Foursomes &mdash; Alternate Shot</div>
+    <div class="rule-body">Partners alternate hitting the same ball. One tees off on odd holes, the other on even. Team with lowest score wins the hole.</div>
+  </div>
+  <div class="card">
+    <div class="ctitle">&#9971; Fourballs &mdash; Better Ball</div>
+    <div class="rule-body">All 4 players play their own ball. Best score from each pair counts. Team whose best ball is lowest wins the hole.</div>
+  </div>
+  <div class="card">
+    <div class="ctitle">&#127940; Singles</div>
+    <div class="rule-body">1v1 match play. Each player on Team 1 paired against a player on Team 2. Most holes won takes the point.</div>
+  </div>
+  <div class="card">
+    <div class="ctitle">&#128220; General Rules</div>
+    <div class="irow"><div class="ilbl">Concede</div><div class="ival">Putts may be conceded at any time &mdash; opponent cannot decline</div></div>
+    <div class="irow"><div class="ilbl">OB / Lost</div><div class="ival">Stroke &amp; distance unless local rules apply</div></div>
+    <div class="irow"><div class="ilbl">Pace</div><div class="ival">Keep up with the group ahead &mdash; ready golf encouraged</div></div>
+    <div class="irow"><div class="ilbl">Disputes</div><div class="ival">Captain&apos;s decision is final</div></div>
+  </div>
 
   <div style="height:12px"></div>
 </div>
@@ -430,39 +422,60 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 
 
-<!-- ════════════ RULES ════════════ -->
-<div id="pg-rules" class="pg">
-  <div class="slabel">&#128215; Format</div>
-  <div class="card">
-    <div class="ctitle">&#129354; Ryder Cup Style</div>
-    <div class="irow"><div class="ilbl">Teams</div><div class="ival">2 teams of 4 players</div></div>
-    <div class="irow"><div class="ilbl">Scoring</div><div class="ival">Match play &mdash; points awarded per match, not per stroke</div></div>
-    <div class="irow"><div class="ilbl">Result</div><div class="ival">Win = 1 pt &nbsp;&middot;&nbsp; Half = &frac12; pt &nbsp;&middot;&nbsp; Loss = 0 pts</div></div>
-    <div class="irow"><div class="ilbl">Handicap</div><div class="ival">TBD</div></div>
+<!-- ════════════ SCORES ════════════ -->
+<div id="pg-scores" class="pg">
+
+  <div class="slabel">&#127942; Overall Standings</div>
+  <div class="score-card">
+    <div class="score-overall">
+      <div style="text-align:center">
+        <div class="score-team-name" style="color:var(--blue)" id="sc-t1name">Team 1</div>
+        <div class="score-big blue" id="sc-t1total">0</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">pts</div>
+      </div>
+      <div class="score-vs">vs</div>
+      <div style="text-align:center">
+        <div class="score-team-name" style="color:var(--red)" id="sc-t2name">Team 2</div>
+        <div class="score-big red" id="sc-t2total">0</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:3px;">pts</div>
+      </div>
+    </div>
   </div>
 
-  <div class="slabel">&#127921; Match Formats</div>
-  <div class="card">
-    <div class="ctitle">&#129309; Foursomes (Alternate Shot)</div>
-    <div class="rule-body">Partners alternate hitting the same ball. One tees off on odd holes, the other on even holes. Team with lowest score wins the hole.</div>
+  <div class="slabel">&#9971; Round Scores</div>
+  <div class="score-card" id="sc-rounds">
+    <div class="score-row">
+      <div class="score-day"><div>Golf Day 1 &mdash; Wed Aug 26</div><div class="score-sub">Meadow Brook</div></div>
+      <input class="score-inp blue" id="sc-d1t1" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
+      <div style="font-size:10px;color:var(--muted);">vs</div>
+      <input class="score-inp red" id="sc-d1t2" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
+    </div>
+    <div class="score-row">
+      <div class="score-day"><div>Golf Day 2 &mdash; Thu Aug 27</div><div class="score-sub">Stonington CC</div></div>
+      <input class="score-inp blue" id="sc-d2t1" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
+      <div style="font-size:10px;color:var(--muted);">vs</div>
+      <input class="score-inp red" id="sc-d2t2" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
+    </div>
+    <div class="score-row">
+      <div class="score-day"><div>Golf Day 3 &mdash; Fri Aug 28</div><div class="score-sub">Shenecossett GC</div></div>
+      <input class="score-inp blue" id="sc-d3t1" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
+      <div style="font-size:10px;color:var(--muted);">vs</div>
+      <input class="score-inp red" id="sc-d3t2" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
+    </div>
+    <div class="score-row">
+      <div class="score-day"><div>Golf Day 4 &mdash; Sun Aug 30</div><div class="score-sub">Stonington CC</div></div>
+      <input class="score-inp blue" id="sc-d4t1" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
+      <div style="font-size:10px;color:var(--muted);">vs</div>
+      <input class="score-inp red" id="sc-d4t2" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
+    </div>
+    <div class="score-row">
+      <div class="score-day"><div>Golf Day 5 &mdash; Mon Aug 31</div><div class="score-sub">Meadow Brook</div></div>
+      <input class="score-inp blue" id="sc-d5t1" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
+      <div style="font-size:10px;color:var(--muted);">vs</div>
+      <input class="score-inp red" id="sc-d5t2" type="number" min="0" max="20" step="0.5" placeholder="&mdash;" oninput="updateScores()">
+    </div>
   </div>
-  <div class="card">
-    <div class="ctitle">&#9971; Fourballs (Better Ball)</div>
-    <div class="rule-body">All 4 players play their own ball. The best score from each pair counts. Team whose best ball is lowest wins the hole.</div>
-  </div>
-  <div class="card">
-    <div class="ctitle">&#127940; Singles</div>
-    <div class="rule-body">1 vs 1 match play. Each player on Team 1 is paired against a player on Team 2. Most holes won takes the point.</div>
-  </div>
-
-  <div class="slabel">&#128220; General Rules</div>
-  <div class="card">
-    <div class="irow"><div class="ilbl">Concede</div><div class="ival">Putts may be conceded at any time &mdash; opponent cannot decline</div></div>
-    <div class="irow"><div class="ilbl">OB / Lost</div><div class="ival">Stroke &amp; distance unless local rules apply</div></div>
-    <div class="irow"><div class="ilbl">Pace</div><div class="ival">Keep up with the group ahead &mdash; ready golf encouraged</div></div>
-    <div class="irow"><div class="ilbl">Disputes</div><div class="ival">Captain&apos;s decision is final</div></div>
-  </div>
-
+  <div class="note">Enter points earned each round &middot; totals update automatically &middot; saves locally</div>
   <div style="height:10px"></div>
 </div>
 
@@ -484,9 +497,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   <button class="nb" id="nb-teams" onclick="go('teams',this)">
     <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
     Teams
-  </button>  <button class="nb" id="nb-rules" onclick="go('rules',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-    Rules
+  </button>  <button class="nb" id="nb-scores" onclick="go('scores',this)">
+    <svg viewBox="0 0 24 24"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M12 17v4"/><path d="M8 21h8"/><path d="M6 9a6 6 0 0 0 12 0V3H6z"/></svg>
+    Scores
   </button>
 </nav>
 
@@ -518,6 +531,7 @@ function go(name, btn) {
   btn.classList.add('on');
   document.getElementById('content').scrollTop = 0;
   if (name === 'teams') renderTeams();
+  if (name === 'scores') loadScores();
 }
 
 /* ── TEAMS ── */
@@ -614,6 +628,44 @@ function showToast(msg) {
   t.textContent = msg; t.classList.add('show');
   clearTimeout(toastTmr);
   toastTmr = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+
+/* ── SCORES ── */
+const DAYS = ['d1','d2','d3','d4','d5'];
+
+function loadScores() {
+  if (!S.scores) S.scores = {};
+  DAYS.forEach(d => { if (!S.scores[d]) S.scores[d] = {t1:'',t2:''}; });
+  DAYS.forEach(d => {
+    const e1 = document.getElementById('sc-'+d+'t1');
+    const e2 = document.getElementById('sc-'+d+'t2');
+    if (e1) e1.value = S.scores[d].t1;
+    if (e2) e2.value = S.scores[d].t2;
+  });
+  updateScores();
+}
+
+function updateScores() {
+  let t1=0, t2=0;
+  DAYS.forEach(d => {
+    const v1 = parseFloat(document.getElementById('sc-'+d+'t1')?.value)||0;
+    const v2 = parseFloat(document.getElementById('sc-'+d+'t2')?.value)||0;
+    if (!S.scores) S.scores = {};
+    if (!S.scores[d]) S.scores[d] = {t1:'',t2:''};
+    S.scores[d].t1 = document.getElementById('sc-'+d+'t1')?.value||'';
+    S.scores[d].t2 = document.getElementById('sc-'+d+'t2')?.value||'';
+    t1 += v1; t2 += v2;
+  });
+  const d1 = document.getElementById('sc-t1total');
+  const d2 = document.getElementById('sc-t2total');
+  if (d1) d1.textContent = t1 % 1 === 0 ? t1 : t1.toFixed(1);
+  if (d2) d2.textContent = t2 % 1 === 0 ? t2 : t2.toFixed(1);
+  const n1 = document.getElementById('sc-t1name');
+  const n2 = document.getElementById('sc-t2name');
+  if (n1) n1.textContent = S.t1name;
+  if (n2) n2.textContent = S.t2name;
+  save();
 }
 
 /* ── INIT ── */
