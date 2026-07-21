@@ -259,11 +259,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 /* ── A2HS BANNER ── */
 #a2hs-banner{position:fixed;bottom:var(--nav-h);left:0;right:0;
   background:linear-gradient(135deg,#071c0a 0%,#0e3018 100%);
-  padding:10px 14px;display:flex;align-items:center;gap:10px;
-  z-index:98;transform:translateY(110%);transition:transform .3s ease;
-  border-top:1px solid rgba(245,208,100,.2);
-  box-shadow:0 -2px 12px rgba(0,0,0,.25);}
-#a2hs-banner.show{transform:translateY(0);}
+  padding:10px 14px;display:none;align-items:center;gap:10px;
+  z-index:98;border-top:2px solid rgba(245,208,100,.4);
+  box-shadow:0 -2px 12px rgba(0,0,0,.35);}
+#a2hs-banner.show{display:flex;}
 .a2hs-on #content{bottom:calc(var(--nav-h) + 56px);}
 .a2hs-txt{flex:1;font-size:11px;line-height:1.45;color:rgba(255,255,255,.82);}
 .a2hs-txt strong{color:#f5d068;font-weight:700;}
@@ -688,17 +687,20 @@ function updateScores() {
 
 /* ── A2HS ── */
 (function(){
-  const KEY = 'bws-a2hs-done';
+  const KEY = 'bws-a2hs-v2';   // v2 clears any old dismissal
   const banner = document.getElementById('a2hs-banner');
   const btn    = document.getElementById('a2hs-btn');
   const close  = document.getElementById('a2hs-close');
   const txt    = document.getElementById('a2hs-txt');
   let deferredPrompt = null;
 
-  // Already running as installed PWA, or user already dismissed — stay hidden
+  // Already running as installed PWA — never show
   const isStandalone = (window.navigator.standalone === true) ||
                        window.matchMedia('(display-mode: standalone)').matches;
-  if (isStandalone || localStorage.getItem(KEY)) return;
+  if (isStandalone) return;
+
+  // User already dismissed on this device
+  if (localStorage.getItem(KEY)) return;
 
   function show() {
     banner.classList.add('show');
@@ -711,17 +713,17 @@ function updateScores() {
     document.body.classList.remove('a2hs-on');
   }
 
-  // iOS Safari — no install prompt API, show share instructions
+  // iOS Safari — show share icon instructions, hide install button
   const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
   if (isIOS) {
-    txt.innerHTML = '<strong>Add to Home Screen</strong><br>Tap the Share icon &#9651; then &ldquo;Add to Home Screen&rdquo;';
+    txt.innerHTML = '<strong>BW&amp;S 2026</strong><br>Tap the Share icon then &ldquo;Add to Home Screen&rdquo;';
     btn.style.display = 'none';
   }
 
-  // Show immediately on load
+  // Show on load
   show();
 
-  // Android / Chrome — native install prompt enables the button
+  // Android / Chrome: capture native install prompt to use when button is tapped
   window.addEventListener('beforeinstallprompt', function(e) {
     e.preventDefault();
     deferredPrompt = e;
