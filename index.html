@@ -289,6 +289,32 @@ html,body{height:100%;background:var(--bg);color:var(--text);
     transition: background 0.15s;
   }
   .day-weather:hover { background: rgba(255,255,255,0.32); }
+
+/* ── RULES ── */
+.rule-list{list-style:none;padding:0;margin:0;}
+.rule-list li{font-size:13px;color:var(--text2);padding:5px 0;
+  border-bottom:1px solid var(--border);line-height:1.5;display:flex;gap:8px;}
+.rule-list li:last-child{border-bottom:none;}
+.rule-list li::before{content:'•';color:var(--accent);font-weight:700;flex-shrink:0;}
+.day-rules{margin-top:6px;}
+.day-rule-hdr{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--text);margin:10px 0 5px;}
+.day-rule-hdr:first-child{margin-top:0;}
+.day-rules .rule-note{font-size:11px;color:var(--muted);font-style:italic;margin-top:4px;}
+
+/* forfeit table */
+.forfeit-tbl{width:100%;border-collapse:collapse;margin-top:2px;}
+.forfeit-tbl td{font-size:12px;padding:6px 4px;border-bottom:1px solid var(--border);
+  vertical-align:middle;line-height:1.4;}
+.forfeit-tbl tr:last-child td{border-bottom:none;}
+.forfeit-tbl td:first-child{color:var(--text2);padding-right:10px;}
+.forfeit-tbl td:last-child{white-space:nowrap;text-align:right;}
+.fpen{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;
+  border-radius:10px;letter-spacing:.02em;}
+.fpen-20{background:var(--amber-lt);color:var(--amber);}
+.fpen-40{background:var(--red-lt);color:var(--red);}
+.fpen-sp{background:var(--blue-lt);color:var(--blue);}
+.fpen-nd{background:#ede9fe;color:#6d28d9;}
 </style>
 </head>
 <body>
@@ -399,6 +425,63 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 
   <div style="height:12px"></div>
+  <div class="slabel">&#128203; Rules</div>
+
+  <!-- General -->
+  <div class="card">
+    <div class="ctitle">General</div>
+    <ul class="rule-list">
+      <li>4-man teams, Ryder Cup style</li>
+      <li>All OB played as lateral</li>
+      <li>Scrambles &mdash; place in fairway &amp; bunkers, drop in the rough</li>
+    </ul>
+  </div>
+
+  <!-- Per-Day -->
+  <div class="card">
+    <div class="ctitle">Format Rules</div>
+    <div class="day-rules">
+
+      <div class="day-rule-hdr">&#9971; Day 1 &mdash; 2 Man Scramble</div>
+      <ul class="rule-list">
+        <li>Place in fairway &amp; bunkers, drop in the rough</li>
+      </ul>
+      <div class="rule-note">More rules TBA</div>
+
+      <div class="day-rule-hdr">&#9971; Day 2 &mdash; Bodega</div>
+      <div class="rule-note">Rules TBA</div>
+
+      <div class="day-rule-hdr">&#9971; Day 3 &mdash; John Daly</div>
+      <div class="rule-note">Rules TBA</div>
+
+      <div class="day-rule-hdr">&#9971; Day 4 &mdash; Singles Matches</div>
+      <div class="rule-note">Rules TBA</div>
+
+    </div>
+  </div>
+
+  <!-- Forfeits -->
+  <div class="slabel">&#127379; Forfeits</div>
+  <div class="card">
+    <table class="forfeit-tbl">
+      <tr><td>Losing team on the day (ROW vs IRE)</td><td><span class="fpen fpen-20">20% Shot</span></td></tr>
+      <tr><td>Losing your game</td><td><span class="fpen fpen-40">40% Shot</span></td></tr>
+      <tr><td>Losing your game by 5 or more</td><td><span class="fpen fpen-nd">Dog Bowl</span></td></tr>
+      <tr><td>Double bogey on the 9th and 18th</td><td><span class="fpen fpen-40">40% Shot Omelette</span></td></tr>
+      <tr><td>First man down</td><td><span class="fpen fpen-40">40% Shot</span></td></tr>
+      <tr><td>Not making the ladies tee</td><td><span class="fpen fpen-20">20% Shot</span></td></tr>
+      <tr><td>Bunker 2 Bunker</td><td><span class="fpen fpen-20">20% Shot</span></td></tr>
+      <tr><td>4 Putt</td><td><span class="fpen fpen-40">40% Shot</span></td></tr>
+      <tr><td>Losing the pink ball</td><td><span class="fpen fpen-40">40% Shot</span></td></tr>
+      <tr><td>2 in the H&#8322;O</td><td><span class="fpen fpen-sp">Depth Charge</span></td></tr>
+      <tr><td>Losing 2 balls on the same hole</td><td><span class="fpen fpen-sp">Depth Charge</span></td></tr>
+      <tr><td>Golfing Misdemeanours</td><td><span class="fpen fpen-20">20% Shot</span></td></tr>
+      <tr><td>New gear</td><td><span class="fpen fpen-40">40% Shot</span></td></tr>
+      <tr><td>The Newbie</td><td><span class="fpen fpen-nd">Special Drink</span></td></tr>
+    </table>
+  </div>
+  <div style="height:10px"></div>
+
 </div>
 
 
