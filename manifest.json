@@ -1,0 +1,17 @@
+{
+  "name": "Beers, Wings & Swings 2026",
+  "short_name": "BW&S 2026",
+  "description": "Golf trip \u2014 Aug 25\u2013Sep 1, Connecticut & Rhode Island",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4ede0",
+  "theme_color": "#071c0a",
+  "icons": [
+    {
+      "src": "BW&S logo.jpg",
+      "sizes": "any",
+      "type": "image/jpeg"
+    }
+  ]
+}
