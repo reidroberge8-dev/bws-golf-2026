@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#071c0a">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Beers, Wings &amp; Swings 2026</title>
 <style>
@@ -247,6 +249,23 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .score-inp:focus{outline:none;border-color:var(--accent);}
 .score-inp.blue{border-color:var(--blue);color:var(--blue);}
 .score-inp.red{border-color:var(--red);color:var(--red);}
+
+
+/* ── A2HS BANNER ── */
+#a2hs-banner{position:fixed;bottom:var(--nav-h);left:0;right:0;
+  background:linear-gradient(135deg,#071c0a 0%,#0e3018 100%);
+  padding:10px 14px;display:flex;align-items:center;gap:10px;
+  z-index:98;transform:translateY(110%);transition:transform .3s ease;
+  border-top:1px solid rgba(245,208,100,.2);
+  box-shadow:0 -2px 12px rgba(0,0,0,.25);}
+#a2hs-banner.show{transform:translateY(0);}
+.a2hs-txt{flex:1;font-size:11px;line-height:1.45;color:rgba(255,255,255,.82);}
+.a2hs-txt strong{color:#f5d068;font-weight:700;}
+.a2hs-btn{background:linear-gradient(135deg,#f5d068,#f0a820);color:#1a0e04;
+  border:none;border-radius:20px;padding:7px 13px;font-size:11px;font-weight:700;
+  cursor:pointer;white-space:nowrap;flex-shrink:0;font-family:inherit;}
+.a2hs-close{background:none;border:none;color:rgba(255,255,255,.5);
+  font-size:18px;cursor:pointer;padding:0 2px;flex-shrink:0;line-height:1;}
 
 </style>
 </head>
@@ -673,10 +692,63 @@ function updateScores() {
   save();
 }
 
+
+/* ── A2HS ── */
+(function(){
+  const KEY = 'bws-a2hs-done';
+  const banner = document.getElementById('a2hs-banner');
+  const btn    = document.getElementById('a2hs-btn');
+  const close  = document.getElementById('a2hs-close');
+  const txt    = document.getElementById('a2hs-txt');
+  let deferredPrompt = null;
+
+  function dismiss() {
+    localStorage.setItem(KEY, '1');
+    banner.classList.remove('show');
+  }
+
+  // Android / Chrome — native install prompt
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!localStorage.getItem(KEY)) banner.classList.add('show');
+  });
+
+  btn.addEventListener('click', async function() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      dismiss();
+    }
+  });
+
+  close.addEventListener('click', dismiss);
+
+  // Fired after successful install on supported browsers
+  window.addEventListener('appinstalled', dismiss);
+
+  // iOS Safari — no beforeinstallprompt, show manual instructions
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+  const isStandalone = window.navigator.standalone === true;
+  if (isIOS && !isStandalone && !localStorage.getItem(KEY)) {
+    txt.innerHTML = '<strong>Add to Home Screen</strong><br>Tap the Share icon &#9651; then &ldquo;Add to Home Screen&rdquo;';
+    btn.style.display = 'none';
+    banner.classList.add('show');
+  }
+})();
+
 /* ── INIT ── */
 load();
 document.getElementById('wifi-ssid-disp').textContent = S.wifiSSID || 'TBD';
 document.getElementById('wifi-pw-disp').textContent = S.wifiPW || 'TBD';
 </script>
+
+<div id="a2hs-banner">
+  <div class="a2hs-txt" id="a2hs-txt"><strong>BW&amp;S 2026</strong><br>Add to your Home Screen for quick access</div>
+  <button class="a2hs-btn" id="a2hs-btn">Add to Home Screen</button>
+  <button class="a2hs-close" id="a2hs-close" aria-label="Dismiss">&#215;</button>
+</div>
+
 </body>
 </html>
