@@ -808,5 +808,39 @@ document.getElementById('wifi-pw-disp').textContent = S.wifiPW || 'TBD';
   <button id="a2hs-btn" onclick="showA2HS()">&#128242; Add BW&amp;S to Home Screen</button>
 </div>
 
+
+<script>
+/* ── SERVICE WORKER ── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js').then(function(reg) {
+      // New SW found: when it activates, reload for fresh content
+      reg.addEventListener('updatefound', function() {
+        var sw = reg.installing;
+        sw.addEventListener('statechange', function() {
+          if (sw.state === 'activated' && navigator.serviceWorker.controller) {
+            window.location.reload();
+          }
+        });
+      });
+    }).catch(function(e) { console.log('SW registration failed:', e); });
+  });
+}
+
+/* ── STANDALONE REFRESH: reload after 5+ min in background ── */
+(function() {
+  var isStandalone = window.navigator.standalone === true ||
+                     window.matchMedia('(display-mode: standalone)').matches;
+  if (!isStandalone) return;
+  var hiddenAt = null;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      hiddenAt = Date.now();
+    } else if (hiddenAt !== null && Date.now() - hiddenAt > 5 * 60 * 1000) {
+      window.location.reload(true);
+    }
+  });
+})();
+</script>
 </body>
 </html>
