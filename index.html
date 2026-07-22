@@ -682,6 +682,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   border-radius:0 5px 5px 0;display:flex;align-items:baseline;gap:0;}
 .db-meta{font-size:10px;font-weight:400;text-transform:none;
   letter-spacing:0;color:var(--muted);margin-left:8px;}
+.db-pts{font-size:10px;font-weight:700;color:var(--amber);background:var(--amber-lt);
+  padding:1px 6px;border-radius:3px;margin-left:auto;flex-shrink:0;}
 .db-body{background:var(--surface);border:1px solid var(--border);
   border-radius:0 0 6px 6px;overflow:hidden;margin-bottom:10px;}
 .match-row{display:flex;align-items:center;gap:4px;padding:7px 8px;
@@ -1446,10 +1448,10 @@ function loadScores() {
   fetchHandicaps();
 
   var DAY_META = {
-    'Day 1': {date:'Wed Aug 26', course:'Meadow Brook'},
-    'Day 2': {date:'Thu Aug 27', course:'Stonington CC'},
-    'Day 3': {date:'Fri Aug 28', course:'Shenecossett GC'},
-    'Day 4': {date:'Mon Aug 31', course:'Meadow Brook'}
+    'Day 1': {date:'Wed Aug 26', course:'Meadow Brook',    pts:'+0.5/stroke (max 3)'},
+    'Day 2': {date:'Thu Aug 27', course:'Stonington CC',   pts:'+3/match'},
+    'Day 3': {date:'Fri Aug 28', course:'Shenecossett GC', pts:'+0.5/stroke (max 3)'},
+    'Day 4': {date:'Mon Aug 31', course:'Meadow Brook',    pts:'3 + 1 rebuttal'}
   };
 
   fetch(SHEET_URL + '&nocache=' + Date.now())
@@ -1491,6 +1493,7 @@ function loadScores() {
 
         html += '<div class="db-hdr">' + day.label + ' — ' + day.format;
         if (meta.date) html += '<span class="db-meta">' + meta.date + ' · ' + meta.course + '</span>';
+        if (meta.pts) html += '<span class="db-pts">' + meta.pts + '</span>';
         html += '</div>';
         html += '<div class="db-body">';
 
