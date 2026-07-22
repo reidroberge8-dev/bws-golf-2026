@@ -599,9 +599,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .rule-list{list-style:none;padding:0;margin:0;}
 
-.rule-list li{font-size:13px;color:var(--text2);padding:5px 0;
+.rule-list li{font-size:12px;color:var(--text2);padding:5px 0;
 
-  border-bottom:1px solid var(--border);line-height:1.5;display:flex;gap:8px;}
+  border-bottom:1px solid var(--border);line-height:1.45;display:flex;gap:8px;}
 
 .rule-list li:last-child{border-bottom:none;}
 
@@ -611,11 +611,39 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .day-rule-hdr{font-size:11px;font-weight:700;text-transform:uppercase;
 
-  letter-spacing:.06em;color:var(--text);margin:10px 0 5px;}
+  letter-spacing:.07em;color:var(--accent);margin:14px 0 7px;
+
+  padding:5px 8px;border-left:3px solid var(--accent);
+
+  background:var(--accent-lt);border-radius:0 5px 5px 0;}
 
 .day-rule-hdr:first-child{margin-top:0;}
 
 .day-rules .rule-note{font-size:11px;color:var(--muted);font-style:italic;margin-top:4px;}
+
+.rule-kv{display:flex;flex-wrap:wrap;gap:5px 16px;margin-bottom:5px;}
+
+.rule-kv-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text2);}
+
+.rkk{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+
+  color:var(--accent);background:var(--accent-lt);padding:1px 6px;
+
+  border-radius:3px;flex-shrink:0;border:1px solid var(--border2);}
+
+.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:6px 0 4px;}
+
+.sg-item{display:flex;justify-content:space-between;align-items:center;
+
+  font-size:11.5px;color:var(--text2);padding:3px 7px;
+
+  background:var(--surface2);border-radius:4px;border:1px solid var(--border);}
+
+.sg-item strong{font-weight:700;flex-shrink:0;margin-left:6px;}
+
+.sg-pos{color:var(--green);}
+
+.sg-neg{color:var(--red);}
 
 
 
@@ -883,61 +911,71 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
       <div class="day-rule-hdr">&#9971; Day 1 &mdash; 2 Man Scramble</div>
 
+      <div class="rule-kv">
+
+        <span class="rule-kv-item"><span class="rkk">HCP</span>35% low man &middot; 15% high man</span>
+
+        <span class="rule-kv-item"><span class="rkk">PTS</span>0.5 per stroke better (max 3)</span>
+
+      </div>
+
       <ul class="rule-list">
-
-        <li>Handicap: 35% of low man, 15% of high man</li>
-
-        <li>Points available: <strong>0.5</strong> per stroke better than opponent (max 3)</li>
 
         <li>6 drives minimum per player</li>
 
       </ul>
 
-      <div class="rule-note">More rules TBA</div>
-
 
 
       <div class="day-rule-hdr">&#9971; Day 2 &mdash; Bodega</div>
 
-      <ul class="rule-list">
+      <div class="rule-kv">
 
-        <li>Handicap: 80%</li>
+        <span class="rule-kv-item"><span class="rkk">HCP</span>80%</span>
 
-        <li>Points available: <strong>1</strong> per match</li>
+        <span class="rule-kv-item"><span class="rkk">PTS</span>1 per match</span>
 
-        <li>Points game</li>
+      </div>
 
-        <li>Low match: <strong>+2</strong></li>
+      <div class="score-grid">
 
-        <li>High match: <strong>+1</strong></li>
+        <div class="sg-item"><span>Low match</span><strong class="sg-pos">+2</strong></div>
 
-        <li>Long drive on Par 5s (must be in fairway): <strong>+1</strong></li>
+        <div class="sg-item"><span>High match</span><strong class="sg-pos">+1</strong></div>
 
-        <li>Closest to pin on Par 3s (must be on green): <strong>+1</strong></li>
+        <div class="sg-item"><span>Long drive (P5)</span><strong class="sg-pos">+1</strong></div>
 
-        <li>3 putts: <strong>&minus;0.5</strong></li>
+        <div class="sg-item"><span>Closest pin (P3)</span><strong class="sg-pos">+1</strong></div>
 
-        <li>Gross birdie: <strong>+1</strong></li>
+        <div class="sg-item"><span>Gross birdie</span><strong class="sg-pos">+1</strong></div>
 
-        <li>Gross eagle: <strong>+1</strong></li>
+        <div class="sg-item"><span>Gross eagle</span><strong class="sg-pos">+1</strong></div>
 
-      </ul>
+        <div class="sg-item"><span>3 putts</span><strong class="sg-neg">&minus;0.5</strong></div>
+
+      </div>
+
+      <div class="rule-note">Long drive: must be in fairway &middot; Closest pin: must be on green</div>
 
 
 
       <div class="day-rule-hdr">&#9971; Day 3 &mdash; John Daly (2v2 Scramble)</div>
 
+      <div class="rule-kv">
+
+        <span class="rule-kv-item"><span class="rkk">HCP</span>35% low man &middot; 15% high man</span>
+
+        <span class="rule-kv-item"><span class="rkk">PTS</span>0.5 per stroke better (max 3)</span>
+
+      </div>
+
       <ul class="rule-list">
 
-        <li>Handicap: 35% of low man, 15% of high man</li>
+        <li>Stroke play, team vs. team</li>
 
-        <li>Points available: <strong>0.5</strong> per stroke better than opponent (max 3)</li>
+        <li>24 beers per team &mdash; each beer consumed = &minus;1 shot from team score</li>
 
-        <li>Stroke play, team vs team</li>
-
-        <li>24 beers per team &mdash; every beer consumed removes 1 shot from your team score</li>
-
-        <li>Unlimited mulligans &mdash; 1 tequila shot per mulligan taken</li>
+        <li>Unlimited mulligans &mdash; 1 tequila shot each</li>
 
       </ul>
 
@@ -945,15 +983,21 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
       <div class="day-rule-hdr">&#9971; Day 4 &mdash; Singles Matches</div>
 
+      <div class="rule-kv">
+
+        <span class="rule-kv-item"><span class="rkk">HCP</span>100% &mdash; mulligans, not strokes</span>
+
+        <span class="rule-kv-item"><span class="rkk">PTS</span>2 per match &middot; 0.5 rebuttal</span>
+
+      </div>
+
       <ul class="rule-list">
-
-        <li>Handicap: 100% &mdash; applied as mulligans instead of strokes (e.g. 4 strokes = flat match + 4 mulligans)</li>
-
-        <li>Points available: <strong>2</strong> per match &middot; <strong>0.5</strong> available in rebuttal match</li>
 
         <li>1v1 match play</li>
 
-        <li>If a match ends early, remaining holes played as rebuttal for <strong>0.5 points</strong></li>
+        <li>e.g. 4 HCP = flat match + 4 mulligans</li>
+
+        <li>Match ends early &rarr; remaining holes as rebuttal (<strong>0.5 pts</strong>)</li>
 
       </ul>
 
