@@ -673,6 +673,33 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .fpen-nd{background:#ede9fe;color:#6d28d9;}
 
+/* day-block match scores */
+.db-hdr{font-size:11px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--accent);padding:5px 8px;
+  border-left:3px solid var(--accent);background:var(--accent-lt);
+  border-radius:0 5px 5px 0;display:flex;align-items:baseline;gap:0;}
+.db-meta{font-size:10px;font-weight:400;text-transform:none;
+  letter-spacing:0;color:var(--muted);margin-left:8px;}
+.db-body{background:var(--surface);border:1px solid var(--border);
+  border-radius:0 0 6px 6px;overflow:hidden;margin-bottom:10px;}
+.match-row{display:flex;align-items:center;gap:4px;padding:7px 8px;
+  border-bottom:1px solid var(--border);}
+.match-row:last-of-type{border-bottom:none;}
+.match-players{flex:1;font-size:11.5px;color:var(--text2);line-height:1.3;}
+.match-players.t2p{text-align:right;}
+.match-score{display:flex;align-items:center;gap:5px;flex-shrink:0;}
+.ms-pts{font-size:15px;font-weight:700;min-width:30px;text-align:center;}
+.ms-pts.blue{color:var(--blue);}
+.ms-pts.red{color:var(--red);}
+.ms-vs{font-size:10px;color:var(--muted);}
+.db-total{display:flex;align-items:center;justify-content:space-between;
+  padding:5px 12px;background:var(--surface2);border-top:1px solid var(--border);}
+.dt-pts{font-size:14px;font-weight:700;min-width:30px;text-align:center;}
+.dt-pts.blue{color:var(--blue);}
+.dt-pts.red{color:var(--red);}
+.dt-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--muted);font-weight:600;}
+
 /* essentials checklist */
 .essentials-list{list-style:none;padding:0;margin:0;}
 .essentials-list li{display:flex;align-items:center;gap:10px;
@@ -1156,37 +1183,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 
     <div class="slabel">&#9971; Round Scores</div>
-  <div class="score-card" id="sc-rounds">
-    <div class="score-row">
-      <div class="score-day"><div>Golf Day 1 &mdash; Wed Aug 26</div><div class="score-sub">Meadow Brook &middot; 2 Man Scramble</div></div>
-      <div class="score-val blue" id="sc-d1t1">&mdash;</div>
-      <div style="font-size:10px;color:var(--muted);">vs</div>
-      <div class="score-val red" id="sc-d1t2">&mdash;</div>
-    </div>
-    <div class="score-row">
-      <div class="score-day"><div>Golf Day 2 &mdash; Thu Aug 27</div><div class="score-sub">Stonington CC &middot; Bodega</div></div>
-      <div class="score-val blue" id="sc-d2t1">&mdash;</div>
-      <div style="font-size:10px;color:var(--muted);">vs</div>
-      <div class="score-val red" id="sc-d2t2">&mdash;</div>
-    </div>
-    <div class="score-row">
-      <div class="score-day"><div>Golf Day 3 &mdash; Fri Aug 28</div><div class="score-sub">Shenecossett GC &middot; John Daly</div></div>
-      <div class="score-val blue" id="sc-d3t1">&mdash;</div>
-      <div style="font-size:10px;color:var(--muted);">vs</div>
-      <div class="score-val red" id="sc-d3t2">&mdash;</div>
-    </div>
-    <div class="score-row" style="opacity:.55;">
-      <div class="score-day"><div>Golf Day 4 &mdash; Sun Aug 30</div><div class="score-sub">Stonington CC &nbsp;<span style="font-size:9px;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:.04em">Exhibition</span></div></div>
-      <div class="score-val blue" id="sc-d4t1">&mdash;</div>
-      <div style="font-size:10px;color:var(--muted);">vs</div>
-      <div class="score-val red" id="sc-d4t2">&mdash;</div>
-    </div>
-    <div class="score-row">
-      <div class="score-day"><div>Golf Day 5 &mdash; Mon Aug 31</div><div class="score-sub">Meadow Brook &middot; Singles Matches</div></div>
-      <div class="score-val blue" id="sc-d5t1">&mdash;</div>
-      <div style="font-size:10px;color:var(--muted);">vs</div>
-      <div class="score-val red" id="sc-d5t2">&mdash;</div>
-    </div>
+  <div id="sc-rounds" style="padding:0 2px;">
+    <div style="color:var(--muted);font-size:12px;padding:10px 4px;">Loading&hellip;</div>
   </div>
   <div style="display:flex;align-items:center;justify-content:space-between;padding:0 4px;margin-top:6px">
     <span id="sc-updated" style="font-size:11px;color:var(--muted)">Loading scores…</span>
@@ -1429,6 +1427,11 @@ function fetchHandicaps() {
     });
 }
 
+function fmt(v) {
+  var n = parseFloat(v);
+  return isNaN(n) ? '—' : (n % 1 === 0 ? String(n) : n.toFixed(1));
+}
+
 function loadScores() {
   var upd = document.getElementById('sc-updated');
   if (upd) upd.textContent = 'Refreshing…';
@@ -1437,29 +1440,79 @@ function loadScores() {
   if (n1) n1.textContent = S.t1name;
   if (n2) n2.textContent = S.t2name;
   fetchHandicaps();
+
+  var DAY_META = {
+    'Day 1': {date:'Wed Aug 26', course:'Meadow Brook'},
+    'Day 2': {date:'Thu Aug 27', course:'Stonington CC'},
+    'Day 3': {date:'Fri Aug 28', course:'Shenecossett GC'},
+    'Day 4': {date:'Mon Aug 31', course:'Meadow Brook'}
+  };
+
   fetch(SHEET_URL + '&nocache=' + Date.now())
     .then(function(r) { return r.text(); })
     .then(function(text) {
       var rows = parseSheetCSV(text);
-      if (n1) n1.textContent = S.t1name;
-      if (n2) n2.textContent = S.t2name;
-      var t1tot = 0, t2tot = 0, hasScore = false;
-      SHEET_MAP.forEach(function(dayId, i) {
-        var row = rows[i + 2];
-        var v1 = row && row[2] ? row[2] : '';
-        var v2 = row && row[3] ? row[3] : '';
-        var el1 = document.getElementById('sc-' + dayId + 't1');
-        var el2 = document.getElementById('sc-' + dayId + 't2');
-        if (el1) el1.textContent = v1 || '—';
-        if (el2) el2.textContent = v2 || '—';
-        t1tot += parseFloat(v1) || 0;
-        t2tot += parseFloat(v2) || 0;
-        if (v1 || v2) hasScore = true;
-      });
+      // cols: Day(0), Format(1), Match(2), T1Players(3), T1Pts(4), T2Players(5), T2Pts(6)
+      // last row = totals (empty day + empty match)
+      var totRow = rows[rows.length - 1];
+      var grandT1 = parseFloat(totRow[4]) || 0;
+      var grandT2 = parseFloat(totRow[6]) || 0;
+      var hasAny = (totRow[4] !== '' || totRow[6] !== '') && (grandT1 > 0 || grandT2 > 0);
+
       var d1el = document.getElementById('sc-t1total');
       var d2el = document.getElementById('sc-t2total');
-      if (d1el) d1el.textContent = hasScore ? (t1tot % 1 === 0 ? t1tot : t1tot.toFixed(1)) : '—';
-      if (d2el) d2el.textContent = hasScore ? (t2tot % 1 === 0 ? t2tot : t2tot.toFixed(1)) : '—';
+      if (d1el) d1el.textContent = hasAny ? fmt(grandT1) : '—';
+      if (d2el) d2el.textContent = hasAny ? fmt(grandT2) : '—';
+
+      // Group data rows by day (skip header row[0] and totals last row)
+      var dataRows = rows.slice(1, rows.length - 1);
+      var days = [], cur = null;
+      dataRows.forEach(function(r) {
+        if (r[0]) { cur = {label:r[0], format:r[1], matches:[]}; days.push(cur); }
+        if (cur && r[2]) cur.matches.push({t1p:r[3], t1pts:r[4], t2p:r[5], t2pts:r[6]});
+      });
+
+      var container = document.getElementById('sc-rounds');
+      if (!container) return;
+      var html = '';
+
+      days.forEach(function(day) {
+        var meta = DAY_META[day.label] || {};
+        var dT1 = 0, dT2 = 0, dHas = false;
+        day.matches.forEach(function(m) {
+          dT1 += parseFloat(m.t1pts) || 0;
+          dT2 += parseFloat(m.t2pts) || 0;
+          if (m.t1pts || m.t2pts) dHas = true;
+        });
+
+        html += '<div class="db-hdr">' + day.label + ' — ' + day.format;
+        if (meta.date) html += '<span class="db-meta">' + meta.date + ' · ' + meta.course + '</span>';
+        html += '</div>';
+        html += '<div class="db-body">';
+
+        day.matches.forEach(function(m) {
+          var v1 = m.t1pts ? fmt(m.t1pts) : '—';
+          var v2 = m.t2pts ? fmt(m.t2pts) : '—';
+          html += '<div class="match-row">';
+          html += '<div class="match-players">' + (m.t1p || '') + '</div>';
+          html += '<div class="match-score">';
+          html += '<span class="ms-pts blue">' + v1 + '</span>';
+          html += '<span class="ms-vs">vs</span>';
+          html += '<span class="ms-pts red">' + v2 + '</span>';
+          html += '</div>';
+          html += '<div class="match-players t2p">' + (m.t2p || '') + '</div>';
+          html += '</div>';
+        });
+
+        html += '<div class="db-total">';
+        html += '<span class="dt-pts blue">' + (dHas ? fmt(dT1) : '—') + '</span>';
+        html += '<span class="dt-lbl">Day total</span>';
+        html += '<span class="dt-pts red">' + (dHas ? fmt(dT2) : '—') + '</span>';
+        html += '</div>';
+        html += '</div>'; // db-body
+      });
+
+      container.innerHTML = html || '<div style="color:var(--muted);font-size:12px;padding:8px 4px;">No data</div>';
       if (upd) upd.textContent = 'Updated ' + new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
     })
     .catch(function() {
