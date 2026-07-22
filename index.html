@@ -673,6 +673,21 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .fpen-nd{background:#ede9fe;color:#6d28d9;}
 
+/* essentials checklist */
+.essentials-list{list-style:none;padding:0;margin:0;}
+.essentials-list li{display:flex;align-items:center;gap:10px;
+  font-size:13px;color:var(--text2);padding:6px 0;
+  border-bottom:1px solid var(--border);cursor:pointer;user-select:none;
+  transition:color .15s;}
+.essentials-list li:last-child{border-bottom:none;}
+.essentials-list li.checked{color:var(--muted);text-decoration:line-through;}
+.ess-box{width:18px;height:18px;border-radius:4px;border:2px solid var(--border2);
+  background:var(--surface);flex-shrink:0;display:flex;align-items:center;
+  justify-content:center;transition:background .15s,border-color .15s;}
+.essentials-list li.checked .ess-box{background:var(--green);border-color:var(--green);}
+.ess-check{display:none;width:10px;height:10px;}
+.essentials-list li.checked .ess-check{display:block;}
+
 </style>
 
 </head>
@@ -855,9 +870,45 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
   </div>
 
+  <div class="slabel">&#9989; Essentials</div>
 
+  <div class="card">
 
+    <ul class="essentials-list" id="ess-list">
 
+      <li onclick="toggleEss(this)" data-key="golf-shoes">
+        <div class="ess-box"><svg class="ess-check" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <span>Golf Shoes</span>
+      </li>
+
+      <li onclick="toggleEss(this)" data-key="golf-glove">
+        <div class="ess-box"><svg class="ess-check" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <span>Golf Glove</span>
+      </li>
+
+      <li onclick="toggleEss(this)" data-key="sunglasses">
+        <div class="ess-box"><svg class="ess-check" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <span>Sunglasses</span>
+      </li>
+
+      <li onclick="toggleEss(this)" data-key="swim-trunks">
+        <div class="ess-box"><svg class="ess-check" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <span>Swim Trunks</span>
+      </li>
+
+      <li onclick="toggleEss(this)" data-key="sunscreen">
+        <div class="ess-box"><svg class="ess-check" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <span>Sunscreen</span>
+      </li>
+
+      <li onclick="toggleEss(this)" data-key="chargers">
+        <div class="ess-box"><svg class="ess-check" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+        <span>Chargers / Adapters</span>
+      </li>
+
+    </ul>
+
+  </div>
 
   <div style="height:12px"></div>
 
@@ -1134,7 +1185,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   </div>
   <div style="display:flex;align-items:center;justify-content:space-between;padding:0 4px;margin-top:6px">
     <span id="sc-updated" style="font-size:11px;color:var(--muted)">Loading scores…</span>
-    <button onclick="loadScores()" style="font-size:11px;color:var(--blue);background:none;border:none;padding:4px 8px;cursor:pointer;font-weight:600">↻ Refresh</button>
+    <button onclick="loadScores(); loadEss();" style="font-size:11px;color:var(--blue);background:none;border:none;padding:4px 8px;cursor:pointer;font-weight:600">↻ Refresh</button>
   </div>
   <div class="slabel">&#128202; Player Handicaps</div>
   <div class="card" style="padding:0;overflow:hidden">
@@ -1249,6 +1300,25 @@ function go(name, btn) {
 }
 
 
+
+/* ── WIFI ── */
+
+/* ── ESSENTIALS ── */
+
+function toggleEss(el) {
+  el.classList.toggle('checked');
+  const key = el.dataset.key;
+  const checked = JSON.parse(localStorage.getItem('bws_ess') || '{}');
+  checked[key] = el.classList.contains('checked');
+  localStorage.setItem('bws_ess', JSON.stringify(checked));
+}
+
+function loadEss() {
+  const checked = JSON.parse(localStorage.getItem('bws_ess') || '{}');
+  document.querySelectorAll('#ess-list li').forEach(li => {
+    if (checked[li.dataset.key]) li.classList.add('checked');
+  });
+}
 
 /* ── WIFI ── */
 
