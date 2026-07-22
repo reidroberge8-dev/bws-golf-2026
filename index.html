@@ -1445,7 +1445,7 @@ function loadScores() {
       if (n2) n2.textContent = S.t2name;
       var t1tot = 0, t2tot = 0, hasScore = false;
       SHEET_MAP.forEach(function(dayId, i) {
-        var row = rows[i + 1];
+        var row = rows[i + 2];
         var v1 = row && row[2] ? row[2] : '';
         var v2 = row && row[3] ? row[3] : '';
         var el1 = document.getElementById('sc-' + dayId + 't1');
