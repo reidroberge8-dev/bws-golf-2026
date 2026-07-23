@@ -1547,7 +1547,7 @@ function loadScores() {
       });
       var totalAwarded = grandT1 + grandT2;
       var totalPossible = totalAwarded + (unplayed * 3);
-      var winThreshold = totalPossible / 2;
+      var winThreshold = Math.ceil((totalPossible / 2 + 0.01) * 2) / 2;
       var winLabel = fmt(winThreshold);
       // Bar fills proportionally to total possible (not just awarded)
       var t1w = Math.min((grandT1 / Math.max(totalPossible, 1)) * 100, 100);
