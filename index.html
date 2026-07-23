@@ -72,7 +72,7 @@
 
   --shadow-md:0 4px 6px rgba(80,40,0,.09),0 2px 4px rgba(80,40,0,.06);
 
-  --nav-h:62px;
+  --nav-h:calc(76px + env(safe-area-inset-bottom));
 
   --hdr-h:72px;
 
@@ -140,7 +140,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
   background:var(--surface);border-top:1px solid var(--border);
 
-  display:flex;z-index:100;box-shadow:0 -1px 4px rgba(0,0,0,.06);}
+  display:flex;z-index:100;box-shadow:0 -1px 4px rgba(0,0,0,.06);
+
+  padding-bottom:env(safe-area-inset-bottom);}
 
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;
 
