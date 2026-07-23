@@ -684,6 +684,27 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   letter-spacing:0;color:var(--muted);margin-left:8px;}
 .db-pts{font-size:10px;font-weight:700;color:var(--amber);background:var(--amber-lt);
   padding:1px 6px;border-radius:3px;margin-left:auto;flex-shrink:0;}
+
+/* electoral-style progress bar */
+.elec-wrap{margin-top:12px;}
+.elec-bar{position:relative;height:34px;background:var(--surface2);
+  border-radius:6px;overflow:hidden;border:1px solid var(--border);}
+.elec-t1{position:absolute;left:0;top:0;height:100%;background:var(--blue);
+  width:0%;transition:width .5s ease;display:flex;align-items:center;
+  justify-content:flex-end;overflow:hidden;}
+.elec-t2{position:absolute;right:0;top:0;height:100%;background:var(--red);
+  width:0%;transition:width .5s ease;display:flex;align-items:center;
+  justify-content:flex-start;overflow:hidden;}
+.elec-t1-pts{font-size:13px;font-weight:700;color:#fff;padding-right:8px;white-space:nowrap;}
+.elec-t2-pts{font-size:13px;font-weight:700;color:#fff;padding-left:8px;white-space:nowrap;}
+.elec-center{position:absolute;left:50%;top:0;width:2px;height:100%;
+  background:var(--text);transform:translateX(-50%);z-index:3;}
+.elec-labels{display:flex;justify-content:space-between;align-items:center;
+  margin-top:5px;padding:0 2px;}
+.elec-lbl{font-size:11px;font-weight:700;}
+.elec-lbl.blue{color:var(--blue);}
+.elec-lbl.red{color:var(--red);}
+.elec-mid{font-size:10px;color:var(--muted);text-align:center;}
 .db-body{background:var(--surface);border:1px solid var(--border);
   border-radius:0 0 6px 6px;overflow:hidden;margin-bottom:10px;}
 .match-row{display:flex;align-items:center;gap:4px;padding:7px 8px;
@@ -1183,6 +1204,30 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
     </div>
 
+    <div class="elec-wrap">
+
+      <div class="elec-bar">
+
+        <div class="elec-t1" id="elec-t1"><span class="elec-t1-pts" id="elec-t1-pts"></span></div>
+
+        <div class="elec-t2" id="elec-t2"><span class="elec-t2-pts" id="elec-t2-pts"></span></div>
+
+        <div class="elec-center"></div>
+
+      </div>
+
+      <div class="elec-labels">
+
+        <span class="elec-lbl blue" id="elec-lbl-t1">0 pts</span>
+
+        <span class="elec-mid">&#9654; 15.5 to win &#9664;</span>
+
+        <span class="elec-lbl red" id="elec-lbl-t2">0 pts</span>
+
+      </div>
+
+    </div>
+
   </div>
 
 
@@ -1468,6 +1513,23 @@ function loadScores() {
       var d2el = document.getElementById('sc-t2total');
       if (d1el) d1el.textContent = hasAny ? fmt(grandT1) : '—';
       if (d2el) d2el.textContent = hasAny ? fmt(grandT2) : '—';
+
+      // Progress bar
+      var TOTAL_PTS = 30;
+      var t1w = Math.min((grandT1 / TOTAL_PTS) * 100, 100);
+      var t2w = Math.min((grandT2 / TOTAL_PTS) * 100, 100);
+      var pb1 = document.getElementById('elec-t1');
+      var pb2 = document.getElementById('elec-t2');
+      var pb1pts = document.getElementById('elec-t1-pts');
+      var pb2pts = document.getElementById('elec-t2-pts');
+      var lbl1 = document.getElementById('elec-lbl-t1');
+      var lbl2 = document.getElementById('elec-lbl-t2');
+      if (pb1) pb1.style.width = t1w + '%';
+      if (pb2) pb2.style.width = t2w + '%';
+      if (pb1pts) pb1pts.textContent = grandT1 > 0 ? fmt(grandT1) : '';
+      if (pb2pts) pb2pts.textContent = grandT2 > 0 ? fmt(grandT2) : '';
+      if (lbl1) lbl1.textContent = fmt(grandT1) + ' pts';
+      if (lbl2) lbl2.textContent = fmt(grandT2) + ' pts';
 
       // Group data rows by day (skip header row[0] and totals last row)
       var dataRows = rows.slice(1, rows.length - 1);
