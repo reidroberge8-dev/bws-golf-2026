@@ -1538,8 +1538,11 @@ function loadScores() {
       if (d1el) d1el.textContent = hasAny ? fmt(grandT1) : '—';
       if (d2el) d2el.textContent = hasAny ? fmt(grandT2) : '—';
 
-      // Progress bar
-      var TOTAL_PTS = 30;
+      // Progress bar — dynamic total based on points actually awarded
+      var totalAwarded = grandT1 + grandT2;
+      var TOTAL_PTS = totalAwarded > 0 ? totalAwarded : 30;
+      var winThreshold = TOTAL_PTS / 2;
+      var winLabel = totalAwarded > 0 ? fmt(winThreshold) : '15';
       var t1w = Math.min((grandT1 / TOTAL_PTS) * 100, 100);
       var t2w = Math.min((grandT2 / TOTAL_PTS) * 100, 100);
       var pb1 = document.getElementById('elec-t1');
@@ -1548,12 +1551,14 @@ function loadScores() {
       var pb2pts = document.getElementById('elec-t2-pts');
       var lbl1 = document.getElementById('elec-lbl-t1');
       var lbl2 = document.getElementById('elec-lbl-t2');
+      var midEl = document.querySelector('.elec-mid');
       if (pb1) pb1.style.width = t1w + '%';
       if (pb2) pb2.style.width = t2w + '%';
       if (pb1pts) pb1pts.textContent = grandT1 > 0 ? fmt(grandT1) : '';
       if (pb2pts) pb2pts.textContent = grandT2 > 0 ? fmt(grandT2) : '';
       if (lbl1) lbl1.textContent = fmt(grandT1) + ' pts';
       if (lbl2) lbl2.textContent = fmt(grandT2) + ' pts';
+      if (midEl) midEl.innerHTML = '&#9654; ' + winLabel + ' to win &#9664;';
 
       // Group data rows by day (skip header row[0] and totals last row)
       var dataRows = rows.slice(1, rows.length - 1);
