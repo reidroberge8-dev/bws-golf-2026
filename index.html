@@ -1983,10 +1983,10 @@ if ('serviceWorker' in navigator) {
 <script>
 (function() {
   var LOCATIONS = [
-    { name: 'Accommodation',            lat: 41.3100, lng: -72.0089, color: '#2d6a4f', label: '🏠', days: 'Home base' },
-    { name: 'Meadow Brook Golf Club',   lat: 41.4845, lng: -71.6178, color: '#1d6fa4', label: '⛳', days: 'Days 1 & 4' },
-    { name: 'Stonington Country Club',  lat: 41.3497, lng: -71.9064, color: '#1d6fa4', label: '⛳', days: 'Days 2 & Exhibition' },
-    { name: 'Shenecossett Golf Course', lat: 41.3317, lng: -72.0683, color: '#1d6fa4', label: '⛳', days: 'Day 3' }
+    { name: 'Accommodation',            lat: 41.3100, lng: -72.0089, color: '#2d6a4f', label: '🏠', days: 'Home base',           drive: null },
+    { name: 'Meadow Brook Golf Club',   lat: 41.4845, lng: -71.6178, color: '#1d6fa4', label: '⛳', days: 'Days 1 & 4',           drive: '~30 min drive' },
+    { name: 'Stonington Country Club',  lat: 41.3497, lng: -71.9064, color: '#1d6fa4', label: '⛳', days: 'Days 2 & Exhibition',  drive: '~20 min drive' },
+    { name: 'Shenecossett Golf Course', lat: 41.3317, lng: -72.0683, color: '#1d6fa4', label: '⛳', days: 'Day 3',                drive: '~15 min drive' }
   ];
 
   function initMap() {
@@ -2011,7 +2011,7 @@ if ('serviceWorker' in navigator) {
         popupAnchor: [0, -18]
       });
       var marker = L.marker([loc.lat, loc.lng], { icon: icon }).addTo(map);
-      marker.bindPopup('<strong>' + loc.name + '</strong><br><span style="font-size:11px;color:#666;">' + loc.days + '</span>');
+      marker.bindPopup('<strong>' + loc.name + '</strong><br><span style="font-size:11px;color:#666;">' + loc.days + '</span>' + (loc.drive ? '<br><span style="font-size:11px;color:#888;">🚗 ' + loc.drive + '</span>' : ''));
       bounds.push([loc.lat, loc.lng]);
     });
 
