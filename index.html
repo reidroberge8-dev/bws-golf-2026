@@ -1538,13 +1538,20 @@ function loadScores() {
       if (d1el) d1el.textContent = hasAny ? fmt(grandT1) : '—';
       if (d2el) d2el.textContent = hasAny ? fmt(grandT2) : '—';
 
-      // Progress bar — dynamic total based on points actually awarded
+      // Progress bar
+      // Count unplayed matches (match row = r[2] non-empty, both pts empty)
+      var dataRowsRaw = rows.slice(1, rows.length - 1);
+      var unplayed = 0;
+      dataRowsRaw.forEach(function(r) {
+        if (r[2] && (r[4] === '' || r[4] == null) && (r[6] === '' || r[6] == null)) unplayed++;
+      });
       var totalAwarded = grandT1 + grandT2;
-      var TOTAL_PTS = totalAwarded > 0 ? totalAwarded : 30;
-      var winThreshold = TOTAL_PTS / 2;
-      var winLabel = totalAwarded > 0 ? fmt(winThreshold) : '15';
-      var t1w = Math.min((grandT1 / TOTAL_PTS) * 100, 100);
-      var t2w = Math.min((grandT2 / TOTAL_PTS) * 100, 100);
+      var totalPossible = totalAwarded + (unplayed * 3);
+      var winThreshold = totalPossible / 2;
+      var winLabel = fmt(winThreshold);
+      // Bar fills proportionally to total possible (not just awarded)
+      var t1w = Math.min((grandT1 / Math.max(totalPossible, 1)) * 100, 100);
+      var t2w = Math.min((grandT2 / Math.max(totalPossible, 1)) * 100, 100);
       var pb1 = document.getElementById('elec-t1');
       var pb2 = document.getElementById('elec-t2');
       var pb1pts = document.getElementById('elec-t1-pts');
