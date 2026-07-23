@@ -742,6 +742,25 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .essentials-list li.checked .ess-box{background:var(--green);border-color:var(--green);}
 .ess-check{display:none;width:10px;height:10px;}
 .essentials-list li.checked .ess-check{display:block;}
+    .grocery-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      background: #2d6a4f;
+      color: #fff;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      box-shadow: 0 2px 8px rgba(45,106,79,.25);
+      transition: background .15s, transform .1s;
+    }
+    .grocery-btn:hover { background: #1b4332; transform: translateY(-1px); }
+    .grocery-btn svg { flex-shrink: 0; }
 
 </style>
 
@@ -924,6 +943,13 @@ html,body{height:100%;background:var(--bg);color:var(--text);
     </button>
 
   </div>
+
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSemPC9xpHDVWDvkRN8Bcra7iuMFNF3Gr7IIBO13my6kIuz02w/viewform?usp=header" target="_blank" class="grocery-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+    </svg>
+    Grocery / Supplies Request
+  </a>
 
   <div class="slabel">&#9989; Essentials</div>
 
