@@ -769,6 +769,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 </style>
 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 
 <body>
@@ -919,6 +920,11 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   </div>
 
 
+
+  <div class="slabel">&#128205; Map</div>
+  <div class="card" style="padding:0;overflow:hidden;border-radius:12px;">
+    <div id="trip-map" style="height:260px;width:100%;border-radius:12px;"></div>
+  </div>
 
   <div class="slabel">&#128246; WiFi</div>
 
@@ -1976,6 +1982,61 @@ if ('serviceWorker' in navigator) {
 
 </script>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function() {
+  var LOCATIONS = [
+    { name: 'Accommodation',            lat: 41.3100, lng: -72.0089, color: '#2d6a4f', label: '🏠', days: 'Home base' },
+    { name: 'Meadow Brook Golf Club',   lat: 41.4845, lng: -71.6178, color: '#1d6fa4', label: '⛳', days: 'Days 1 & 4' },
+    { name: 'Stonington Country Club',  lat: 41.3497, lng: -71.9064, color: '#1d6fa4', label: '⛳', days: 'Days 2 & Exhibition' },
+    { name: 'Shenecossett Golf Course', lat: 41.3317, lng: -72.0683, color: '#1d6fa4', label: '⛳', days: 'Day 3' }
+  ];
+
+  function initMap() {
+    var el = document.getElementById('trip-map');
+    if (!el || el._mapInit) return;
+    el._mapInit = true;
+
+    var map = L.map('trip-map', { zoomControl: true, scrollWheelZoom: false });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 16
+    }).addTo(map);
+
+    var bounds = [];
+    LOCATIONS.forEach(function(loc) {
+      var icon = L.divIcon({
+        className: '',
+        html: '<div style="background:' + loc.color + ';color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.35);border:2px solid #fff;">' + loc.label + '</div>',
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+        popupAnchor: [0, -18]
+      });
+      var marker = L.marker([loc.lat, loc.lng], { icon: icon }).addTo(map);
+      marker.bindPopup('<strong>' + loc.name + '</strong><br><span style="font-size:11px;color:#666;">' + loc.days + '</span>');
+      bounds.push([loc.lat, loc.lng]);
+    });
+
+    map.fitBounds(bounds, { padding: [24, 24] });
+  }
+
+  // Init when Info tab is shown
+  var origGo = window.go;
+  document.addEventListener('DOMContentLoaded', function() {
+    // Patch go() to init map when switching to info tab
+    var _go = window.go;
+    window.go = function(name, btn) {
+      _go(name, btn);
+      if (name === 'info') setTimeout(initMap, 50);
+    };
+    // Also init if info tab is active on load
+    if (document.getElementById('pg-info') && document.getElementById('pg-info').classList.contains('on')) {
+      setTimeout(initMap, 100);
+    }
+  });
+})();
+</script>
 </body>
 
 </html>
