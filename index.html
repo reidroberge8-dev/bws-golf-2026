@@ -994,17 +994,22 @@ html,body{height:100%;background:var(--bg);color:var(--text);
     Grocery / Supplies Request
   </a>
 
-  <div style="height:12px"></div>
-
-  <div class="slabel">&#128203; Rules</div>
 
 
+</div>
 
-  <!-- General -->
+
+
+
+
+
+<!-- ════════════ RULES ════════════ -->
+
+<div id="pg-rules" class="pg">
+
+  <div class="slabel">&#128203; General Rules</div>
 
   <div class="card">
-
-    <div class="ctitle">General</div>
 
     <ul class="rule-list">
 
@@ -1022,11 +1027,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 
 
-  <!-- Per-Day -->
+  <div class="slabel">&#9971; Format Rules</div>
 
   <div class="card">
-
-    <div class="ctitle">Format Rules</div>
 
     <div class="day-rules">
 
@@ -1133,7 +1136,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
         <li>Mulligans instead of strokes<br><span style="font-size:11px;color:var(--muted);font-style:italic;">e.g. 4 strokes = flat match + 4 mulligans</span></li>
 
-
       </ul>
 
 
@@ -1143,8 +1145,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   </div>
 
 
-
-  <!-- Forfeits -->
 
   <div class="slabel">&#127379; Forfeits</div>
 
@@ -1184,12 +1184,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
   <div style="height:10px"></div>
 
-
-
 </div>
-
-
-
 
 
 <!-- ════════════ SCORES ════════════ -->
@@ -1301,6 +1296,14 @@ html,body{height:100%;background:var(--bg);color:var(--text);
     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
 
     Info
+
+  </button>
+
+  <button class="nb" id="nb-rules" onclick="go('rules',this)">
+
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+
+    Rules
 
   </button>
 
