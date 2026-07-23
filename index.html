@@ -210,13 +210,15 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .ival{font-size:13px;font-weight:500;flex:1;line-height:1.5;color:var(--text);}
 
-.mapbtn{display:flex;align-items:center;gap:10px;
+.mapbtn-row{display:flex;gap:8px;margin-top:7px;}
+
+.mapbtn{display:flex;align-items:center;gap:8px;
 
   background:var(--surface2);border:1px solid var(--border);
 
   border-radius:8px;padding:10px 12px;text-decoration:none;
 
-  color:var(--text);margin-top:7px;width:100%;
+  color:var(--text);flex:1;
 
   box-shadow:var(--shadow);transition:box-shadow .15s,border-color .15s;}
 
@@ -898,25 +900,18 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
     <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">&#128222; <a href="tel:+18609820569" style="color:var(--accent);text-decoration:none;">+1 (860) 982-0569</a></div>
 
-    <a class="mapbtn" href="https://maps.apple.com/?address=940+Groton+Long+Point+Rd,+Groton,+CT+06340" target="_blank">
-
-      <span class="mapbtn-icon">&#128506;</span>
-
-      <div><div class="mapbtn-main">Open in Apple Maps</div><div class="mapbtn-sub">Tap for directions</div></div>
-
-      <span class="mapbtn-arr">&#8250;</span>
-
-    </a>
-
-    <a class="mapbtn" href="https://www.google.com/maps/search/940+Groton+Long+Point+Rd,+Groton,+CT+06340" target="_blank">
-
-      <span class="mapbtn-icon">&#128506;</span>
-
-      <div><div class="mapbtn-main">Open in Google Maps</div><div class="mapbtn-sub">Tap for directions</div></div>
-
-      <span class="mapbtn-arr">&#8250;</span>
-
-    </a>
+    <div class="mapbtn-row">
+      <a class="mapbtn" href="https://maps.apple.com/?address=940+Groton+Long+Point+Rd,+Groton,+CT+06340" target="_blank">
+        <span class="mapbtn-icon">&#128506;</span>
+        <span class="mapbtn-main">Apple Maps</span>
+        <span class="mapbtn-arr">&#8250;</span>
+      </a>
+      <a class="mapbtn" href="https://www.google.com/maps/search/940+Groton+Long+Point+Rd,+Groton,+CT+06340" target="_blank">
+        <span class="mapbtn-icon">&#128506;</span>
+        <span class="mapbtn-main">Google Maps</span>
+        <span class="mapbtn-arr">&#8250;</span>
+      </a>
+    </div>
 
   </div>
 
