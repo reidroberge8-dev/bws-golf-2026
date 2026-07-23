@@ -676,14 +676,17 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .fpen-nd{background:#ede9fe;color:#6d28d9;}
 
 /* day-block match scores */
-.db-hdr{font-size:11px;font-weight:700;text-transform:uppercase;
-  letter-spacing:.07em;color:var(--accent);padding:5px 8px;
-  border-left:3px solid var(--accent);background:var(--accent-lt);
-  border-radius:0 5px 5px 0;display:flex;align-items:baseline;gap:0;}
-.db-meta{font-size:10px;font-weight:400;text-transform:none;
-  letter-spacing:0;color:var(--muted);margin-left:8px;}
+.db-hdr{background:var(--surface2);border:1px solid var(--border);
+  border-top:3px solid var(--accent);border-bottom:none;
+  border-radius:8px 8px 0 0;padding:10px 12px 8px;}
+.db-hdr-top{display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:3px;}
+.db-day-lbl{font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;color:var(--accent);}
+.db-format{font-size:14px;font-weight:700;color:var(--text);line-height:1.2;}
+.db-meta{font-size:11px;color:var(--muted);margin-top:2px;}
 .db-pts{font-size:10px;font-weight:700;color:var(--amber);background:var(--amber-lt);
-  padding:1px 6px;border-radius:3px;margin-left:auto;flex-shrink:0;}
+  padding:2px 7px;border-radius:3px;flex-shrink:0;border:1px solid #e6c96a;}
 
 /* electoral-style progress bar */
 .elec-wrap{margin-top:12px;}
@@ -1552,9 +1555,13 @@ function loadScores() {
           if (m.t1pts || m.t2pts) dHas = true;
         });
 
-        html += '<div class="db-hdr">' + day.label + ' — ' + day.format;
-        if (meta.date) html += '<span class="db-meta">' + meta.date + ' · ' + meta.course + '</span>';
+        html += '<div class="db-hdr">';
+        html += '<div class="db-hdr-top">';
+        html += '<span class="db-day-lbl">' + day.label + '</span>';
         if (meta.pts) html += '<span class="db-pts">' + meta.pts + '</span>';
+        html += '</div>';
+        html += '<div class="db-format">' + day.format + '</div>';
+        if (meta.date) html += '<div class="db-meta">' + meta.date + ' · ' + meta.course + '</div>';
         html += '</div>';
         html += '<div class="db-body">';
 
