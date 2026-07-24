@@ -1364,6 +1364,12 @@ function load() {
 
   PLAYERS.forEach(p => { if (!S.players[p]) S.players[p] = { hcp: '', team: 0 }; });
 
+  // Always use latest hardcoded WiFi — overrides stale localStorage values
+
+  S.wifiSSID = 'TMOBILE-2146';
+
+  S.wifiPW = 'sf7kb8v965d';
+
 }
 
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
