@@ -1546,11 +1546,10 @@ function applyStrokes(dayLabel, playerStr, side, mIdx) {
     return playerStr;
   }
   if (ps) {
-    var isMull = dayLabel === 'Day 4';
     return playerStr.split(' & ').map(function(p) {
       var n2 = ps[p.trim()];
       if (!n2) return p;
-      return p + ' <span class=\"hcp-badge\">(' + n2 + (isMull ? 'm' : '') + ')</span>';
+      return p + ' <span class=\"hcp-badge\">(' + n2 + ')</span>';
     }).join(' & ');
   }
   return playerStr;
