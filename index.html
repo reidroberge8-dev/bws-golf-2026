@@ -513,7 +513,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .score-val.blue{color:var(--blue);}
 .score-val.red{color:var(--red);}
 .hcp-badge{font-size:11px;color:var(--text);font-weight:700;}
-.day-hcp-note{font-size:11px;color:var(--amber);font-weight:600;font-style:italic;background:var(--amber-lt);border-radius:20px;padding:3px 12px;text-align:center;margin:4px auto 6px;width:fit-content;}
+.day-hcp-note{font-size:11px;color:var(--amber);font-weight:600;font-style:italic;background:var(--amber-lt);border-radius:20px;padding:3px 12px;text-align:center;margin:5px auto 0;width:fit-content;}
 .hcp-tbl{width:100%;border-collapse:collapse;}
 .hcp-tbl td{padding:6px 8px;font-size:13px;border-bottom:1px solid var(--border);}
 .hcp-tbl tr:last-child td{border-bottom:none;}
@@ -1642,8 +1642,8 @@ function loadScores() {
         html += '</div>';
         html += '<div class="db-format">' + day.format + '</div>';
         if (meta.date) html += '<div class="db-meta">' + meta.date + ' · ' + meta.course + '</div>';
-        html += '</div>';
         if (day.label === 'Day 4') html += '<div class="day-hcp-note">mulligans, not strokes</div>';
+        html += '</div>';
         html += '<div class="db-body">';
 
         day.matches.forEach(function(m, mIdx) {
