@@ -1542,13 +1542,12 @@ function applyStrokes(dayLabel, playerStr, side, mIdx) {
   var ps = PLAYER_STROKES[dayLabel];
   if (ts && ts[mIdx] !== undefined) {
     var n = side === 't1' ? ts[mIdx].t1 : ts[mIdx].t2;
-    if (n > 0) return playerStr + ' <span class=\"hcp-badge\">(' + n + ')</span>';
-    return playerStr;
+    return playerStr + ' <span class=\"hcp-badge\">(' + n + ')</span>';
   }
   if (ps) {
     return playerStr.split(' & ').map(function(p) {
       var n2 = ps[p.trim()];
-      if (!n2) return p;
+      if (n2 == null) return p;
       return p + ' <span class=\"hcp-badge\">(' + n2 + ')</span>';
     }).join(' & ');
   }
