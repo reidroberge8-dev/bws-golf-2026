@@ -905,7 +905,13 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
       <li>Ball in a divot (fairway only) &mdash; nearest point of relief, no closer to the hole</li>
 
-      <li>Handicap strokes are based on the <em>difference</em> between opponents' handicaps, rounded to the nearest whole number at the end &mdash; not by rounding each handicap individually first. Example: 8.45 vs 5.5 = 2.95 difference = <strong>3 strokes</strong> (not 8&minus;5 = 2).</li>
+      <li>
+        <strong>Handicap rounding:</strong> Take the difference between handicaps first, then round to the nearest whole number &mdash; never round each individually.
+        <div style="margin-top:8px;padding:8px 10px;background:var(--surface);border-radius:8px;border:1px solid var(--border);font-size:12px;line-height:1.8">
+          <div>8.45 &minus; 5.50 = 2.95 &rarr; <strong>3 strokes</strong> &nbsp;&#10003;</div>
+          <div style="color:var(--muted);text-decoration:line-through">Round first: 8 &minus; 5 = 2 strokes &nbsp;&#10007;</div>
+        </div>
+      </li>
 
     </ul>
 
