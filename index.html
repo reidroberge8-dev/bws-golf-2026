@@ -1438,8 +1438,8 @@ function loadScores() {
         if (r[2] && (r[4] === '' || r[4] == null) && (r[6] === '' || r[6] == null)) unplayed++;
       });
       var totalAwarded = grandT1 + grandT2;
-      var totalPossible = totalAwarded + (unplayed * 3);
-      var winThreshold = Math.ceil((totalPossible / 2 + 0.01) * 2) / 2;
+      var totalPossible = 24; // 6 matches x2pts + 4 singles x3pts
+      var winThreshold = 12.5;
       var winLabel = fmt(winThreshold);
       // Bar fills proportionally to total possible (not just awarded)
       var t1w = Math.min((grandT1 / Math.max(totalPossible, 1)) * 100, 100);
