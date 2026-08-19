@@ -57,6 +57,7 @@
   --red-lt:#fee2e2;
 
   --amber:#b45309;
+  --amber-dk:var(--amber-dk);
 
   --amber-lt:#fef3c7;
 
@@ -83,6 +84,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   font-family:'Amazon Ember','Segoe UI',system-ui,-apple-system,sans-serif;
 
   font-size:13px;line-height:1.5;overflow:hidden;}
+
+
 
 /* ── HEADER ── */
 
@@ -112,9 +115,11 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
-.hs{font-size:10.5px;color:rgba(245,208,100,.55);
+.hs{font-size:10px;color:rgba(245,208,100,.55);
 
   margin-top:2px;letter-spacing:.07em;text-transform:uppercase;}
+
+
 
 /* ── CONTENT ── */
 
@@ -127,6 +132,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .pg.on{display:block;animation:pg-in .18s ease-out;}
 
 @keyframes pg-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+
 
 /* ── BOTTOM NAV ── */
 
@@ -154,6 +161,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .nb.on svg{stroke:var(--accent);}
 
+
+
 /* ── SHARED ── */
 
 .card{background:var(--surface);border:1px solid var(--border);
@@ -172,6 +181,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .note{font-size:11px;color:var(--muted);margin-top:-5px;margin-bottom:9px;padding-left:1px;}
 
+
+
 /* ── PILLS ── */
 
 .pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;}
@@ -185,6 +196,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .pill.blue{background:var(--blue-lt);color:var(--blue);}
 
 .pill.indigo{background:var(--accent-lt);color:var(--accent);}
+
+
 
 /* ── INFO ── */
 
@@ -234,6 +247,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .copybtn:active{opacity:.85;}
 
+
+
 /* ── FLIGHT CARDS ── */
 
 .fc{display:flex;align-items:center;gap:10px;
@@ -266,6 +281,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .fcc-pax{font-size:10px;color:var(--text2);text-align:right;max-width:100px;line-height:1.4;}
 
+
+
 /* ── TEAMS ── */
 
 .team-row{display:flex;gap:8px;margin-bottom:4px;}
@@ -287,6 +304,64 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .tc-players{font-size:11px;color:var(--text2);line-height:1.7;}
 
 .tc-empty{font-size:11px;color:var(--muted);font-style:italic;}
+
+.prow{display:flex;align-items:center;gap:9px;padding:8px 11px;
+
+  background:var(--surface);border:1px solid var(--border);
+
+  border-radius:8px;margin-bottom:5px;box-shadow:var(--shadow);}
+
+.pavatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;
+
+  justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;}
+
+.av-un{background:var(--surface2);color:var(--muted);border:1.5px solid var(--border2);}
+
+.av-bl{background:var(--blue-lt);color:var(--blue);border:1.5px solid var(--blue);}
+
+.av-rd{background:var(--red-lt);color:var(--red);border:1.5px solid var(--red);}
+
+.pname{flex:1;font-weight:600;font-size:13px;color:var(--text);}
+
+.hcp-lbl{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+
+.hcpinput{background:var(--surface2);border:1px solid var(--border2);border-radius:6px;
+
+  color:var(--text);font-size:12px;font-weight:700;width:48px;text-align:center;padding:5px 2px;}
+
+.hcpinput:focus{outline:none;border-color:var(--accent);}
+
+.ttoggle{display:flex;border-radius:6px;overflow:hidden;border:1px solid var(--border2);}
+
+.tbtn{padding:5px 8px;font-size:11px;font-weight:600;border:none;
+
+  cursor:pointer;background:var(--surface2);color:var(--muted);}
+
+.tbtn.abl{background:var(--blue-lt);color:var(--blue);}
+
+.tbtn.ard{background:var(--red-lt);color:var(--red);}
+
+.tn-row{display:flex;gap:10px;}
+
+.tn-group{flex:1;}
+
+.tn-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
+
+.tn-lbl.blue{color:var(--blue);}
+
+.tn-lbl.red{color:var(--red);}
+
+.tninput{width:100%;background:var(--surface2);border-radius:7px;
+
+  font-size:13px;font-weight:600;padding:8px 10px;font-family:inherit;}
+
+.tninput.blue{border:1.5px solid var(--blue);color:var(--blue);}
+
+.tninput.red{border:1.5px solid var(--red);color:var(--red);}
+
+.tninput:focus{outline:none;}
+
+
 
 /* ── SCHEDULE ── */
 
@@ -342,9 +417,13 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .dval.tbd{color:var(--muted);font-style:italic;}
 
+
+
 /* ── RULES ── */
 
 .rule-body{font-size:13px;color:var(--text2);line-height:1.7;}
+
+
 
 /* ── TOAST ── */
 
@@ -363,6 +442,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   box-shadow:var(--shadow-md);}
 
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+
 
 .tc-cap{font-weight:700;}
 
@@ -398,6 +479,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .range-yes{color:var(--green);font-weight:600;}.range-no{color:var(--muted);}
 
+
+
 /* ── SCORES ── */
 
 .score-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;
@@ -416,8 +499,20 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .score-vs{font-size:13px;color:var(--muted);font-weight:600;}
 
-.hcp-badge{font-size:11px;color:var(--text);font-weight:700;margin-left:2px;}
-.day-hcp-note{font-size:11px;color:var(--blue);font-weight:600;font-style:italic;background:var(--blue-lt);border-radius:20px;padding:3px 12px;text-align:center;margin:5px auto 0;width:fit-content;}
+.score-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);}
+
+.score-row:last-child{border-bottom:none;}
+
+.score-day{flex:1;font-size:12px;font-weight:600;color:var(--text2);}
+
+.score-sub{font-size:10px;color:var(--muted);margin-top:1px;}
+
+.score-inp{width:44px;text-align:center;background:var(--surface2);border:1px solid var(--border2);
+
+  border-radius:6px;font-size:14px;font-weight:700;padding:5px 2px;color:var(--text);}
+.score-val{width:48px;min-height:40px;border-radius:8px;background:rgba(0,0,0,0.05);display:flex;align-items:center;justify-content:center;font-size:1.15rem;font-weight:800;flex-shrink:0;}
+.score-val.blue{color:var(--blue);}
+.score-val.red{color:var(--red);}
 .hcp-tbl{width:100%;border-collapse:collapse;}
 .hcp-tbl td{padding:6px 8px;font-size:13px;border-bottom:1px solid var(--border);}
 .hcp-tbl tr:last-child td{border-bottom:none;}
@@ -434,6 +529,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .score-inp.blue{border-color:var(--blue);color:var(--blue);}
 
 .score-inp.red{border-color:var(--red);color:var(--red);}
+
+
+
+
 
 /* ── A2HS BUTTON ── */
 
@@ -467,6 +566,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 @keyframes bws-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
+
+
+
+
   .day-weather {
 
     display: inline-block;
@@ -494,6 +597,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   }
 
   .day-weather:hover { background: rgba(255,255,255,0.32); }
+
+
 
 /* ── RULES ── */
 
@@ -535,7 +640,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 .sg-item{display:flex;justify-content:space-between;align-items:center;
 
-  font-size:11.5px;color:var(--text2);padding:3px 7px;
+  font-size:12px;color:var(--text2);padding:3px 7px;
 
   background:var(--surface2);border-radius:4px;border:1px solid var(--border);}
 
@@ -546,6 +651,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .sg-neg{color:var(--red);}
 .dval-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
 .dval-pts{font-size:11px;color:var(--amber);background:var(--amber-lt);flex-shrink:0;text-align:right;padding:1px 6px;border-radius:3px;font-weight:600;}
+
+
 
 /* forfeit table */
 
@@ -640,16 +747,23 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 .essentials-list li.checked .ess-box{background:var(--green);border-color:var(--green);}
 .ess-check{display:none;width:10px;height:10px;}
 .essentials-list li.checked .ess-check{display:block;}
-    .grocery-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 18px;margin-bottom:10px;background:#d97706;color:#fff;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;letter-spacing:.01em;box-shadow:0 1px 3px rgba(217,119,6,.35);transition:opacity .15s;}
-    .grocery-btn:hover{opacity:.85;}
-    .grocery-btn svg{flex-shrink:0;}
+    .grocery-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 18px;margin-bottom:10px;background:var(--amber-dk);color:#fff;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;letter-spacing:.01em;box-shadow:0 1px 3px rgba(217,119,6,.35);transition:opacity .15s;}
+.grocery-btn:hover{opacity:.85;}
+.grocery-btn svg{flex-shrink:0;}
 
+
+/* ── utility classes ── */
+.tc-muted{color:var(--muted);}
+.fc-detail{font-size:12px;color:var(--text2);line-height:1.4;}
+.fc-icon{font-size:1.5em;min-width:30px;text-align:center;}
 </style>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 
 <body>
+
+
 
 <div id="hdr">
 
@@ -665,7 +779,11 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 </div>
 
+
+
 <div id="content">
+
+
 
 <!-- ════════════════════════════
 
@@ -676,6 +794,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 <div id="pg-schedule" class="pg on">
 
   <div class="slabel">&#128197; Full Itinerary</div>
+
+
 
   <div class="daycard">
 
@@ -689,11 +809,11 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
     <div class="daybody">
 
-      <div class="drow"><div class="dicon">&#128748;</div><div class="dcontent"><div class="dlbl">09:34 &mdash; BOS Arrival</div><div class="dval">Matty &middot; <span style="color:var(--muted)">DL5632 from JAX</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/DL5632" target="_blank">Track &#9992;</a></div></div></div>
+      <div class="drow"><div class="dicon">&#128748;</div><div class="dcontent"><div class="dlbl">09:34 &mdash; BOS Arrival</div><div class="dval">Matty &middot; <span class="tc-muted">DL5632 from JAX</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/DL5632" target="_blank">Track &#9992;</a></div></div></div>
 
-      <div class="drow"><div class="dicon">&#128748;</div><div class="dcontent"><div class="dlbl">14:55 &mdash; BOS Arrival</div><div class="dval">Simon, Ryan, Richard, Joey, Aaron &middot; <span style="color:var(--muted)">EI133 from DUB</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/EI133" target="_blank">Track &#9992;</a></div></div></div>
+      <div class="drow"><div class="dicon">&#128748;</div><div class="dcontent"><div class="dlbl">14:55 &mdash; BOS Arrival</div><div class="dval">Simon, Ryan, Richard, Joey, Aaron &middot; <span class="tc-muted">EI133 from DUB</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/EI133" target="_blank">Track &#9992;</a></div></div></div>
 
-      <div class="drow"><div class="dicon">&#128748;</div><div class="dcontent"><div class="dlbl">16:10 &mdash; BOS Arrival</div><div class="dval">John &middot; <span style="color:var(--muted)">AY5645 from MAD</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/AY5645" target="_blank">Track &#9992;</a></div></div></div>
+      <div class="drow"><div class="dicon">&#128748;</div><div class="dcontent"><div class="dlbl">16:10 &mdash; BOS Arrival</div><div class="dval">John &middot; <span class="tc-muted">AY5645 from MAD</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/AY5645" target="_blank">Track &#9992;</a></div></div></div>
 
       <div class="drow"><div class="dicon">&#127828;</div><div class="dcontent"><div class="dlbl">~18:00 &mdash; Dinner Stop &middot; Chick-fil-A</div><div class="dval"><div>1225 Division St, East Greenwich, RI</div><div class="map-btns" style="margin-top:6px;"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=1225+Division+St,+East+Greenwich,+RI+02818" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=1225+Division+St,+East+Greenwich,+RI+02818" target="_blank">Google Maps</a></div></div></div></div>
 
@@ -703,17 +823,21 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
   </div>
 
-  <div class="daycard"><div class="dayhdr golf"><div><div class="daydate">Wednesday, August 26</div><a class="day-weather" href="https://www.google.com/search?q=weather+Richmond+RI" target="_blank">&#9728;&#65039; Weather - Richmond, RI</a></div><div class="dayhdr-right"><span class="daytype golf">&#9971; Golf Day 1</span><div class="daysub">Day 2 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Course</div><div><a class="course-link" href="https://www.meadowbrookgolfri.com/" target="_blank">Meadow Brook Golf Club</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=163+Kingstown+Rd%2C+Richmond%2C+RI+02898" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=163+Kingstown+Rd%2C+Richmond%2C+RI+02898" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://www.meadowbrookgolfri.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/meadowbrookri/" target="_blank">Course Info</a></div></div></div><div class="drow"><div class="dicon">&#8987;</div><div class="dcontent"><div class="dlbl">Tee Times</div><div class="dval">10:33am &nbsp;&middot;&nbsp; 10:42am <span style="color:var(--muted);font-size:12px">(cash discount)</span></div></div></div><div class="drow"><div class="dicon">&#9749;</div><div class="dcontent"><div class="dlbl">Departure Time</div><div class="dval">9:30am</div></div></div><div class="drow"><div class="dicon">&#127941;</div><div class="dcontent"><div class="dlbl">Game Mode</div><div class="dval dval-row"><span>2 Man Scramble</span><span class="dval-pts">+2 per match</span></div></div></div><div class="drow"><div class="dicon">&#127948;</div><div class="dcontent"><div class="dlbl">Driving Range</div><div class="dval"><span class="range-no">No</span></div></div></div><div class="drow"><div class="dicon">&#127942;</div><div class="dcontent"><div class="dlbl">Fantasy Golf Draft</div><div class="dval">Tour Championship &nbsp;&middot;&nbsp; 17:30</div></div></div><div class="drow"><div class="dicon">&#127955;</div><div class="dcontent"><div class="dlbl">Beer Pong Tournament</div><div class="dval"><span class="dval-pts">&#9889; Power-Up: Winning team earns 1 throw in next day's round &mdash; any shot, any time. Ball is thrown/rolled, counts as a stroke.</span></div></div></div></div></div>
 
-  <div class="daycard"><div class="dayhdr golf"><div><div class="daydate">Thursday, August 27</div><a class="day-weather" href="https://www.google.com/search?q=weather+Stonington+CT" target="_blank">&#9728;&#65039; Weather - Stonington, CT</a></div><div class="dayhdr-right"><span class="daytype golf">&#9971; Golf Day 2</span><div class="daysub">Day 3 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Course</div><div><a class="course-link" href="https://stoningtoncountryclub.com/" target="_blank">Stonington Country Club</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=396+Taugwonk+Rd%2C+Stonington%2C+CT+06378" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=396+Taugwonk+Rd%2C+Stonington%2C+CT+06378" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://stoningtoncountryclub.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/stoningtoncc/" target="_blank">Course Info</a></div></div></div><div class="drow"><div class="dicon">&#8987;</div><div class="dcontent"><div class="dlbl">Tee Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#9749;</div><div class="dcontent"><div class="dlbl">Departure Time</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#127941;</div><div class="dcontent"><div class="dlbl">Game Mode</div><div class="dval dval-row"><span>Bodega</span><span class="dval-pts">+2 per match</span></div></div></div><div class="drow"><div class="dicon">&#127948;</div><div class="dcontent"><div class="dlbl">Driving Range</div><div class="dval"><span class="range-yes">&#10003; Yes &mdash; warm up time included</span></div></div></div><div class="drow"><div class="dicon">&#128663;</div><div class="dcontent"><div class="dlbl">Reminder &nbsp;&middot;&nbsp; 17:30</div><div class="dval">&#128241; Schedule Ubers for Friday</div></div></div><div class="drow"><div class="dicon">&#127919;</div><div class="dcontent"><div class="dlbl">Yard Games Competition</div><div class="dval"><span class="dval-pts">&#9889; Power-Up: Winning team plays 1 hole from the front tees in Friday's round &mdash; each teammate chooses their own hole.</span></div></div></div></div></div>
 
-  <div class="daycard"><div class="dayhdr golf"><div><div class="daydate">Friday, August 28</div><a class="day-weather" href="https://www.google.com/search?q=weather+Groton+CT" target="_blank">&#9728;&#65039; Weather - Groton, CT</a></div><div class="dayhdr-right"><span class="daytype golf">&#9971; Golf Day 3</span><div class="daysub">Day 4 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Course</div><div><a class="course-link" href="https://www.shennygolf.com/" target="_blank">Shenecossett Golf Course</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=93+Plant+St%2C+Groton%2C+CT+06340" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=93+Plant+St%2C+Groton%2C+CT+06340" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://www.shennygolf.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/shennecossettgc/" target="_blank">Course Info</a></div></div></div><div class="drow"><div class="dicon">&#8987;</div><div class="dcontent"><div class="dlbl">Tee Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#9749;</div><div class="dcontent"><div class="dlbl">Departure Time</div><div class="dval">TBD</div><div class="dnote">&#128204; Reid drives to the course 90 min before tee time with 4 people + all clubs, returns home, then Ubers back with the rest of the crew.</div></div></div><div class="drow"><div class="dicon">&#127941;</div><div class="dcontent"><div class="dlbl">Game Mode</div><div class="dval dval-row"><span>John Daly</span><span class="dval-pts">+2 per match</span></div></div></div><div class="drow"><div class="dicon">&#127948;</div><div class="dcontent"><div class="dlbl">Driving Range</div><div class="dval"><span class="range-no">No</span></div></div></div><div class="drow"><div class="dicon">&#127829;</div><div class="dcontent"><div class="dlbl">Evening &mdash; Dinner &middot; The Rolling Tomato</div><div class="dval">Pizza &#127829; &nbsp;<a href="https://www.google.com/searchviewer/42?cvd=CLw_EiYKJOICITIfEhgiFtLX29IPEAoML2cvMTI1X3Z3MmJjGAA6AwjwDQ%3D%3D&hl=en-US&gl=us&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=tactile&gei=xJ9naonlB5-hiLMPxaLBiAE&ei=xJ9naonlB5-hiLMPxaLBiAE&fo_s=OA&opi=79508299&ebb=1&cs=0&foub=mcpp" target="_blank" class="track-link">Order Online &#8599;</a></div></div></div></div></div>
+  <div class="daycard"><div class="dayhdr golf"><div><div class="daydate">Wednesday, August 26</div><a class="day-weather" href="https://www.google.com/search?q=weather+Richmond+RI" target="_blank">&#9728;&#65039; Weather - Richmond, RI</a></div><div class="dayhdr-right"><span class="daytype golf">&#9971; Golf Day 1</span><div class="daysub">Day 2 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Course</div><div><a class="course-link" href="https://www.meadowbrookgolfri.com/" target="_blank">Meadow Brook Golf Club</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=163+Kingstown+Rd%2C+Richmond%2C+RI+02898" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=163+Kingstown+Rd%2C+Richmond%2C+RI+02898" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://www.meadowbrookgolfri.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/meadowbrookri/" target="_blank">Course Info</a></div></div></div><div class="drow"><div class="dicon">&#8987;</div><div class="dcontent"><div class="dlbl">Tee Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#9749;</div><div class="dcontent"><div class="dlbl">Breakfast &amp; Departure Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#127941;</div><div class="dcontent"><div class="dlbl">Game Mode</div><div class="dval dval-row"><span>2 Man Scramble</span><span class="dval-pts">+0.5 per stroke better (max 3)</span></div></div></div><div class="drow"><div class="dicon">&#127948;</div><div class="dcontent"><div class="dlbl">Driving Range</div><div class="dval"><span class="range-no">No</span></div></div></div><div class="drow"><div class="dicon">&#127942;</div><div class="dcontent"><div class="dlbl">Fantasy Golf Draft</div><div class="dval">Tour Championship &nbsp;&middot;&nbsp; 17:30</div></div></div></div></div>
 
-  <div class="daycard"><div class="dayhdr off"><div><div class="daydate">Saturday, August 29</div><a class="day-weather" href="https://www.google.com/search?q=weather+Groton+CT" target="_blank">&#9728;&#65039; Weather - Groton, CT</a></div><div class="dayhdr-right"><span class="daytype off">&#9728;&#65039; Off Day</span><div class="daysub">Day 5 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#127774;</div><div class="dcontent"><div class="dlbl">Day Off</div><div class="dval">BBQ, Boats, Bucket Golf</div></div></div><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Rainout Backup</div><div><a class="course-link" href="https://www.norwichgolf.com/" target="_blank">Norwich Golf Course</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=685+New+London+Turnpike%2C+Norwich%2C+CT+06360" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=685+New+London+Turnpike%2C+Norwich%2C+CT+06360" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://www.norwichgolf.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/norwichgc/index.htm" target="_blank">Course Info</a></div><div class="dval" style="margin-top:5px;">TBD</div><div class="rainout-note">Reserved if a round earlier in the week is rained out</div></div></div></div></div>
+  <div class="daycard"><div class="dayhdr golf"><div><div class="daydate">Thursday, August 27</div><a class="day-weather" href="https://www.google.com/search?q=weather+Stonington+CT" target="_blank">&#9728;&#65039; Weather - Stonington, CT</a></div><div class="dayhdr-right"><span class="daytype golf">&#9971; Golf Day 2</span><div class="daysub">Day 3 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Course</div><div><a class="course-link" href="https://stoningtoncountryclub.com/" target="_blank">Stonington Country Club</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=396+Taugwonk+Rd%2C+Stonington%2C+CT+06378" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=396+Taugwonk+Rd%2C+Stonington%2C+CT+06378" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://stoningtoncountryclub.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/stoningtoncc/" target="_blank">Course Info</a></div></div></div><div class="drow"><div class="dicon">&#8987;</div><div class="dcontent"><div class="dlbl">Tee Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#9749;</div><div class="dcontent"><div class="dlbl">Breakfast &amp; Departure Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#127941;</div><div class="dcontent"><div class="dlbl">Game Mode</div><div class="dval dval-row"><span>Bodega</span><span class="dval-pts">+3 per match</span></div></div></div><div class="drow"><div class="dicon">&#127948;</div><div class="dcontent"><div class="dlbl">Driving Range</div><div class="dval"><span class="range-yes">&#10003; Yes &mdash; warm up time included</span></div></div></div><div class="drow"><div class="dicon">&#128663;</div><div class="dcontent"><div class="dlbl">Reminder &nbsp;&middot;&nbsp; 17:30</div><div class="dval">&#128241; Schedule Ubers for Friday</div></div></div></div></div>
 
-  <div class="daycard"><div class="dayhdr golf"><div><div class="daydate">Sunday, August 30</div><a class="day-weather" href="https://www.google.com/search?q=weather+Stonington+CT" target="_blank">&#9728;&#65039; Weather - Stonington, CT</a></div><div class="dayhdr-right"><span class="daytype golf">&#9971; Golf Day 4</span><div class="daysub">Day 6 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Course</div><div><a class="course-link" href="https://stoningtoncountryclub.com/" target="_blank">Stonington Country Club</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=396+Taugwonk+Rd%2C+Stonington%2C+CT+06378" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=396+Taugwonk+Rd%2C+Stonington%2C+CT+06378" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://stoningtoncountryclub.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/stoningtoncc/" target="_blank">Course Info</a></div></div></div><div class="drow"><div class="dicon">&#8987;</div><div class="dcontent"><div class="dlbl">Tee Times</div><div class="dval">TBD</div><div class="rainout-note">&#128101; 8 additional golfers joining this round</div></div></div><div class="drow"><div class="dicon">&#9749;</div><div class="dcontent"><div class="dlbl">Departure Time</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#127941;</div><div class="dcontent"><div class="dlbl">Game Mode</div><div class="dval">Single Day Ryder Cup</div><div class="dnote">&#9888;&#65039; Not counted toward the Ryder Cup standings</div></div></div><div class="drow"><div class="dicon">&#127948;</div><div class="dcontent"><div class="dlbl">Driving Range</div><div class="dval"><span class="range-yes">&#10003; Yes &mdash; warm up time included</span></div></div></div><div class="drow"><div class="dicon">&#127869;</div><div class="dcontent"><div class="dlbl">~17:30 &mdash; Dinner &middot; Stonington CC</div><div class="dval">Post-round dinner at the club</div></div></div></div></div>
+  <div class="daycard"><div class="dayhdr golf"><div><div class="daydate">Friday, August 28</div><a class="day-weather" href="https://www.google.com/search?q=weather+Groton+CT" target="_blank">&#9728;&#65039; Weather - Groton, CT</a></div><div class="dayhdr-right"><span class="daytype golf">&#9971; Golf Day 3</span><div class="daysub">Day 4 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Course</div><div><a class="course-link" href="https://www.shennygolf.com/" target="_blank">Shenecossett Golf Course</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=93+Plant+St%2C+Groton%2C+CT+06340" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=93+Plant+St%2C+Groton%2C+CT+06340" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://www.shennygolf.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/shennecossettgc/" target="_blank">Course Info</a></div></div></div><div class="drow"><div class="dicon">&#8987;</div><div class="dcontent"><div class="dlbl">Tee Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#9749;</div><div class="dcontent"><div class="dlbl">Breakfast &amp; Departure Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#127941;</div><div class="dcontent"><div class="dlbl">Game Mode</div><div class="dval dval-row"><span>John Daly</span><span class="dval-pts">+0.5 per stroke better (max 3)</span></div></div></div><div class="drow"><div class="dicon">&#127948;</div><div class="dcontent"><div class="dlbl">Driving Range</div><div class="dval"><span class="range-no">No</span></div></div></div><div class="drow"><div class="dicon">&#127829;</div><div class="dcontent"><div class="dlbl">Evening &mdash; Dinner &middot; The Rolling Tomato</div><div class="dval">Pizza &#127829; &nbsp;<a href="https://www.google.com/searchviewer/42?cvd=CLw_EiYKJOICITIfEhgiFtLX29IPEAoML2cvMTI1X3Z3MmJjGAA6AwjwDQ%3D%3D&hl=en-US&gl=us&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=tactile&gei=xJ9naonlB5-hiLMPxaLBiAE&ei=xJ9naonlB5-hiLMPxaLBiAE&fo_s=OA&opi=79508299&ebb=1&cs=0&foub=mcpp" target="_blank" class="track-link">Order Online &#8599;</a></div></div></div></div></div>
 
-  <div class="daycard"><div class="dayhdr golf"><div><div class="daydate">Monday, August 31</div><a class="day-weather" href="https://www.google.com/search?q=weather+Richmond+RI" target="_blank">&#9728;&#65039; Weather - Richmond, RI</a></div><div class="dayhdr-right"><span class="daytype golf">&#9971; Golf Day 5</span><div class="daysub">Day 7 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Course</div><div><a class="course-link" href="https://www.meadowbrookgolfri.com/" target="_blank">Meadow Brook Golf Club</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=163+Kingstown+Rd%2C+Richmond%2C+RI+02898" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=163+Kingstown+Rd%2C+Richmond%2C+RI+02898" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://www.meadowbrookgolfri.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/meadowbrookri/" target="_blank">Course Info</a></div></div></div><div class="drow"><div class="dicon">&#8987;</div><div class="dcontent"><div class="dlbl">Tee Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#9749;</div><div class="dcontent"><div class="dlbl">Departure Time</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#127941;</div><div class="dcontent"><div class="dlbl">Game Mode</div><div class="dval dval-row"><span>Singles Matches</span><span class="dval-pts">+3 per match</span></div></div></div><div class="drow"><div class="dicon">&#127948;</div><div class="dcontent"><div class="dlbl">Driving Range</div><div class="dval"><span class="range-no">No</span></div></div></div><div class="drow"><div class="dicon">&#127843;</div><div class="dcontent"><div class="dlbl">Dinner</div><div class="dval"><a class="course-link" href="https://bleugingerct.com/menu" target="_blank">Bleu Ginger</a> &nbsp;&middot;&nbsp; Sushi &nbsp;&middot;&nbsp; 18:30</div></div></div></div></div>
+  <div class="daycard"><div class="dayhdr off"><div><div class="daydate">Saturday, August 29</div><a class="day-weather" href="https://www.google.com/search?q=weather+Groton+CT" target="_blank">&#9728;&#65039; Weather - Groton, CT</a></div><div class="dayhdr-right"><span class="daytype off">&#9728;&#65039; Off Day</span><div class="daysub">Day 5 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#127774;</div><div class="dcontent"><div class="dlbl">Day Off</div><div class="dval">BBQ, Boats, Bucket Golf</div></div></div><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Rainout Backup</div><div><a class="course-link" href="https://www.shennygolf.com/" target="_blank">Shenecossett Golf Course</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=93+Plant+St%2C+Groton%2C+CT+06340" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=93+Plant+St%2C+Groton%2C+CT+06340" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://www.shennygolf.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/shennecossettgc/" target="_blank">Course Info</a></div><div class="dval" style="margin-top:5px;">TBD</div><div class="rainout-note">Reserved if a round earlier in the week is rained out</div></div></div></div></div>
+
+  <div class="daycard"><div class="dayhdr golf"><div><div class="daydate">Sunday, August 30</div><a class="day-weather" href="https://www.google.com/search?q=weather+Stonington+CT" target="_blank">&#9728;&#65039; Weather - Stonington, CT</a></div><div class="dayhdr-right"><span class="daytype golf">&#9971; Golf Day 4</span><div class="daysub">Day 6 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Course</div><div><a class="course-link" href="https://stoningtoncountryclub.com/" target="_blank">Stonington Country Club</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=396+Taugwonk+Rd%2C+Stonington%2C+CT+06378" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=396+Taugwonk+Rd%2C+Stonington%2C+CT+06378" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://stoningtoncountryclub.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/stoningtoncc/" target="_blank">Course Info</a></div></div></div><div class="drow"><div class="dicon">&#8987;</div><div class="dcontent"><div class="dlbl">Tee Times</div><div class="dval">TBD</div><div class="rainout-note">&#128101; 8 additional golfers joining this round</div></div></div><div class="drow"><div class="dicon">&#9749;</div><div class="dcontent"><div class="dlbl">Breakfast &amp; Departure Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#127941;</div><div class="dcontent"><div class="dlbl">Game Mode</div><div class="dval">TBD</div><div class="dnote">&#9888;&#65039; Not counted toward the Ryder Cup standings</div></div></div><div class="drow"><div class="dicon">&#127948;</div><div class="dcontent"><div class="dlbl">Driving Range</div><div class="dval"><span class="range-yes">&#10003; Yes &mdash; warm up time included</span></div></div></div><div class="drow"><div class="dicon">&#127869;</div><div class="dcontent"><div class="dlbl">~17:30 &mdash; Dinner &middot; Stonington CC</div><div class="dval">Post-round dinner at the club</div></div></div></div></div>
+
+  <div class="daycard"><div class="dayhdr golf"><div><div class="daydate">Monday, August 31</div><a class="day-weather" href="https://www.google.com/search?q=weather+Richmond+RI" target="_blank">&#9728;&#65039; Weather - Richmond, RI</a></div><div class="dayhdr-right"><span class="daytype golf">&#9971; Golf Day 5</span><div class="daysub">Day 7 of 8</div></div></div><div class="daybody"><div class="drow"><div class="dicon">&#9971;</div><div class="dcontent"><div class="dlbl">Course</div><div><a class="course-link" href="https://www.meadowbrookgolfri.com/" target="_blank">Meadow Brook Golf Club</a></div><div class="map-btns"><a class="map-btn map-apple" href="https://maps.apple.com/?daddr=163+Kingstown+Rd%2C+Richmond%2C+RI+02898" target="_blank">Apple Maps</a><a class="map-btn map-google" href="https://www.google.com/maps/dir/?api=1&destination=163+Kingstown+Rd%2C+Richmond%2C+RI+02898" target="_blank">Google Maps</a><a class="map-btn map-web" href="https://www.meadowbrookgolfri.com/" target="_blank">Website</a><a class="map-btn map-info" href="https://course.bluegolf.com/bluegolf/course/course/meadowbrookri/" target="_blank">Course Info</a></div></div></div><div class="drow"><div class="dicon">&#8987;</div><div class="dcontent"><div class="dlbl">Tee Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#9749;</div><div class="dcontent"><div class="dlbl">Breakfast &amp; Departure Times</div><div class="dval">TBD</div></div></div><div class="drow"><div class="dicon">&#127941;</div><div class="dcontent"><div class="dlbl">Game Mode</div><div class="dval dval-row"><span>Singles Matches</span><span class="dval-pts">+3 per match</span></div></div></div><div class="drow"><div class="dicon">&#127948;</div><div class="dcontent"><div class="dlbl">Driving Range</div><div class="dval"><span class="range-no">No</span></div></div></div></div></div>
+
+
 
   <div class="daycard">
 
@@ -727,15 +851,15 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
     <div class="daybody">
 
-      <div class="drow"><div class="dicon">&#128663;</div><div class="dcontent"><div class="dlbl">Car 1 &mdash; Departs House 12:00pm</div><div class="dval">Pete &middot; <span style="color:var(--muted)">arrives BOS approx. 2:00pm</span></div></div></div>
+      <div class="drow"><div class="dicon">&#128663;</div><div class="dcontent"><div class="dlbl">Car 1 &mdash; Departs House 10:00am</div><div class="dval">Pete &middot; <span class="tc-muted">arrives BOS approx. 12:00pm</span></div></div></div>
 
-      <div class="drow"><div class="dicon">&#128663;</div><div class="dcontent"><div class="dlbl">Car 2 &mdash; Departs House 3:00pm</div><div class="dval">Reid &middot; <span style="color:var(--muted)">arrives BOS approx. 5:00pm</span></div></div></div>
+      <div class="drow"><div class="dicon">&#128663;</div><div class="dcontent"><div class="dlbl">Car 2 &mdash; Departs House 2:30pm</div><div class="dval">Reid &middot; <span class="tc-muted">arrives BOS approx. 4:30pm</span></div></div></div>
 
-      <div class="drow"><div class="dicon">&#128747;</div><div class="dcontent"><div class="dlbl">17:25 &mdash; BOS Departure</div><div class="dval">Simon, Ryan, Richard, Joey, Aaron &middot; <span style="color:var(--muted)">EI132 to DUB</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/EI132" target="_blank">Track &#9992;</a></div></div></div>
+      <div class="drow"><div class="dicon">&#128747;</div><div class="dcontent"><div class="dlbl">20:10 &mdash; BOS Departure</div><div class="dval">Matty &middot; <span class="tc-muted">DL5593 to JAX</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/DL5593" target="_blank">Track &#9992;</a></div></div></div>
 
-      <div class="drow"><div class="dicon">&#128747;</div><div class="dcontent"><div class="dlbl">20:10 &mdash; BOS Departure</div><div class="dval">Matty &middot; <span style="color:var(--muted)">DL5593 to JAX</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/DL5593" target="_blank">Track &#9992;</a></div></div></div>
+      <div class="drow"><div class="dicon">&#128747;</div><div class="dcontent"><div class="dlbl">17:25 &mdash; BOS Departure</div><div class="dval">Simon, Ryan, Richard, Joey, Aaron &middot; <span class="tc-muted">EI132 to DUB</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/EI132" target="_blank">Track &#9992;</a></div></div></div>
 
-      <div class="drow"><div class="dicon">&#128747;</div><div class="dcontent"><div class="dlbl">21:20 &mdash; BOS Departure</div><div class="dval">John &middot; <span style="color:var(--muted)">AY5370 to MAD</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/AY5370" target="_blank">Track &#9992;</a></div></div></div>
+      <div class="drow"><div class="dicon">&#128747;</div><div class="dcontent"><div class="dlbl">21:20 &mdash; BOS Departure</div><div class="dval">John &middot; <span class="tc-muted">AY5370 to MAD</span> &nbsp;<a class="track-link" href="https://flightaware.com/live/flight/AY5370" target="_blank">Track &#9992;</a></div></div></div>
 
     </div>
 
@@ -745,6 +869,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 </div>
 
+
+
+
+
 <!-- ════════════════════════════
 
      INFO
@@ -752,6 +880,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 ════════════════════════════ -->
 
 <div id="pg-info" class="pg">
+
+
 
   <div class="slabel">&#127968; Accommodation</div>
 
@@ -780,17 +910,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
   </div>
 
+
+
   <div class="slabel">&#128205; Map</div>
   <div class="card" style="padding:0;overflow:hidden;border-radius:12px;">
     <div id="trip-map" style="height:260px;width:100%;border-radius:12px;"></div>
   </div>
-
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSemPC9xpHDVWDvkRN8Bcra7iuMFNF3Gr7IIBO13my6kIuz02w/viewform?usp=header" target="_blank" class="grocery-btn">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
-    </svg>
-    Grocery / Supplies Request
-  </a>
 
   <div class="slabel">&#128246; WiFi</div>
 
@@ -811,11 +936,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);
       Copy WiFi Password
 
     </button>
-
-    <div style="text-align:center;padding:12px 0 4px">
-      <div style="font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Scan / Hold to Join</div>
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACJElEQVR42u1bMY7cMAwcxgZcaoE8YJ+i/dkiT8oPrKfsAwJYpQEbk0KU7StSXBOAxqhYYO2pSMyQQ8pGfOeUH/jeEV544YUXXnjh/4U3P2N7aK86AsXM7FX7u5fiGRefSZILAGA3/0kkZwwkSSqeofHVGWpmEwEMRF783UlsxfMWeP56rmb2AFyVFZ/b4POym70/EznXUfGJju8pTARQAZTnNgJpNeRec6l4RscXsybIyJ+JQJ0INP7urX1WPAPz98LQ8oABaTWitiZa8QyMRzM/3isPzRABaQPndHomN0mcFc+g+IGc09qtb51o74+ZvZpT2qXPkfnbSTx0wqatzTwapDFZ/I2rz0g8VHkDuRyCjIHI9HQrv1Hrb+PqcBB2Qx9Nbqq/uMV8sqmy/51or7R2z6T6ewN9dlVevH/u7TS+yLXiGbO/WlyLT1d0Sbz6q+j48gBQbIS9F18NAtiNXHxdqP1v7PlG56/7I/auucu1+Bt9ftVUeT5f9Jz79l/5DY4vT15Gk12V3TNJn2P7X5fmq0j31Mr/3mI+edk05GOmlS/VWflF0P1gn14MG8uTALCPQB03oP7cFM9bzCd9tHFcrbsyWf3zDfa/Vy90NlnXdZLyG/X+1XHy7xEGDLT8sXaxwxTPm+HPhUIxM6CO3RgrPrHvTxIVYHn4M8sEDOnPqHiG3h91m9uKcF4Gnpt+3y6p/gbEm77vFl544YUXXvj/jv8LnVj2hQimKyYAAAAASUVORK5CYII=" alt="WiFi QR Code" style="width:160px;height:160px;border-radius:8px;border:1px solid var(--border)">
-    </div>
 
   </div>
 
@@ -864,28 +984,22 @@ html,body{height:100%;background:var(--bg);color:var(--text);
         <span>Chargers / Adapters</span>
       </li>
 
-      <li onclick="toggleEss(this)" data-key="portable-speaker">
-        <div class="ess-box"><svg class="ess-check" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
-        <span>Portable Speaker</span>
-      </li>
-
 
     </ul>
 
   </div>
 
-  <div class="slabel">&#128716; Room Assignments</div>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSemPC9xpHDVWDvkRN8Bcra7iuMFNF3Gr7IIBO13my6kIuz02w/viewform?usp=header" target="_blank" class="grocery-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+    </svg>
+    Grocery / Supplies Request
+  </a>
 
-  <div class="card">
-    <div class="irow"><div class="ilbl">Upstairs Bedroom 1</div><div class="ival">Simon</div></div>
-    <div class="irow"><div class="ilbl">Upstairs Bedroom 2</div><div class="ival">Matty</div></div>
-    <div class="irow"><div class="ilbl">Upstairs Hallway Bed</div><div class="ival">Ryan</div></div>
-    <div class="irow"><div class="ilbl">Big Room Above Garage</div><div class="ival">John, Aaron, Joey</div></div>
-    <div class="irow"><div class="ilbl">Downstairs Bedroom</div><div class="ival">Reid</div></div>
-    <div class="irow"><div class="ilbl">Pull Out Couch <span style="color:var(--muted);font-size:12px">(it's actually pretty nice)</span></div><div class="ival">Richie</div></div>
-  </div>
 
 </div>
+
+
 
 <!-- ════════════ RULES ════════════ -->
 
@@ -899,22 +1013,17 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
       <li>4-man teams, Ryder Cup style</li>
 
-      <li>All OB played as lateral &mdash; 2 club lengths from the OB/hazard line, no closer to the hole (must use that club on the next shot). Or drop anywhere back on the line from point of entry to flagstick.</li>
+      <li>All OB played as lateral &mdash; 2 club length drop from the point of entry, no closer to the hole</li>
 
       <li>Stonington CC local rule &mdash; no relief from stone walls, play the ball as it lies</li>
 
       <li>Ball in a divot (fairway only) &mdash; nearest point of relief, no closer to the hole</li>
 
-      <li>
-        <strong>Handicap Rounding:</strong> Rounding happens at the end, on the calculated strokes vs opponent.
-        <div style="margin-top:8px;padding:8px 10px;background:var(--surface);border-radius:8px;border:1px solid var(--border);font-size:12px;line-height:1.7">
-          Team A (8.45) vs Team B (5.50) &rarr; 2.95 strokes &rarr; <strong>3 strokes</strong>
-        </div>
-      </li>
-
     </ul>
 
   </div>
+
+
 
   <div class="slabel">&#9971; Format Rules</div>
 
@@ -922,30 +1031,32 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
     <div class="day-rules">
 
+
+
       <div class="day-rule-hdr">&#9971; Day 1 &mdash; 2 Man Scramble</div>
 
       <div class="rule-kv">
 
         <span class="rule-kv-item"><span class="rkk">HCP</span>35% low man &middot; 15% high man</span>
 
-        <span class="rule-kv-item"><span class="rkk">PTS</span>+2 per match</span>
+        <span class="rule-kv-item"><span class="rkk">PTS</span>0.5 per stroke better (max 3)</span>
 
       </div>
 
       <ul class="rule-list">
 
-        <li>Match play, team vs. team</li>
+        <li>Stroke play, team vs. team</li>
 
         <li>6 drives minimum per player</li>
         <li>Place in fairway &amp; bunkers, drop in the rough</li>
 
-        <li>1 club length drop, no closer to the hole &mdash; must use the club you drop with for your next shot</li>
+        <li>1 club length drop, no closer to the hole</li>
 
         <li>Putts &mdash; 1 putter head length, no closer to the hole</li>
 
-        <li>If a match ends early, remaining holes are played for a special forfeit</li>
-
       </ul>
+
+
 
       <div class="day-rule-hdr">&#9971; Day 2 &mdash; Bodega</div>
 
@@ -953,13 +1064,13 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
         <span class="rule-kv-item"><span class="rkk">HCP</span>80%</span>
 
-        <span class="rule-kv-item"><span class="rkk">PTS</span>2 per match</span>
+        <span class="rule-kv-item"><span class="rkk">PTS</span>3 per match</span>
 
       </div>
 
       <div class="score-grid">
 
-        <div class="sg-item"><span>Low match</span><strong class="sg-pos">+1</strong></div>
+        <div class="sg-item"><span>Low match</span><strong class="sg-pos">+2</strong></div>
 
         <div class="sg-item"><span>High match</span><strong class="sg-pos">+1</strong></div>
 
@@ -975,10 +1086,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
       </div>
 
-      <ul class="rule-list" style="margin-top:8px">
-        <li>Long drive: must be in fairway &middot; Closest pin: must be on green</li>
-        <li>All players must putt out completely &mdash; or concede the hole for an automatic 3-putt</li>
-      </ul>
+      <div class="rule-note">Long drive: must be in fairway &middot; Closest pin: must be on green</div>
+
+
 
       <div class="day-rule-hdr">&#9971; Day 3 &mdash; John Daly (2v2 Scramble)</div>
 
@@ -986,7 +1096,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
         <span class="rule-kv-item"><span class="rkk">HCP</span>35% low man &middot; 15% high man</span>
 
-        <span class="rule-kv-item"><span class="rkk">PTS</span>+2 per match</span>
+        <span class="rule-kv-item"><span class="rkk">PTS</span>0.5 per stroke better (max 3)</span>
 
       </div>
 
@@ -996,17 +1106,17 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
         <li>24 beers per team &mdash; each beer consumed = &minus;1 shot from team score</li>
 
-        <li>Unlimited mulligans &mdash; 1 x 40% shot each</li>
+        <li>Unlimited mulligans &mdash; 1 tequila shot each</li>
 
         <li>Place in fairway &amp; bunkers, drop in the rough</li>
 
-        <li>1 club length drop, no closer to the hole &mdash; must use the club you drop with for your next shot</li>
+        <li>1 club length drop, no closer to the hole</li>
 
         <li>Putts &mdash; 1 putter head length, no closer to the hole</li>
 
-        <li>If a match ends early, remaining holes are played for a special forfeit</li>
-
       </ul>
+
+
 
       <div class="day-rule-hdr">&#9971; Day 4 &mdash; Singles Matches</div>
 
@@ -1024,13 +1134,15 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
         <li>Mulligans instead of strokes<br><span style="font-size:11px;color:var(--muted);font-style:italic;">e.g. 4 strokes = flat match + 4 mulligans</span></li>
 
-        <li>If a match ends early, remaining holes are played for a special forfeit</li>
-
       </ul>
+
+
 
     </div>
 
   </div>
+
+
 
   <div class="slabel">&#127379; Forfeits</div>
 
@@ -1046,6 +1158,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
       <tr><td>Double bogey on the 9th and 18th</td><td><span class="fpen fpen-40">40% Shot Omelette</span></td></tr>
 
+      <tr><td>First man down</td><td><span class="fpen fpen-40">40% Shot</span></td></tr>
+
       <tr><td>Not making the ladies tee</td><td><span class="fpen fpen-20">20% Shot</span></td></tr>
 
       <tr><td>Bunker 2 Bunker</td><td><span class="fpen fpen-20">20% Shot</span></td></tr>
@@ -1058,9 +1172,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
       <tr><td>Golfing Misdemeanours</td><td><span class="fpen fpen-20">20% Shot</span></td></tr>
 
-      <tr><td>The Newbie</td><td><span class="fpen fpen-nd">Special Drink</span></td></tr>
+      <tr><td>New gear</td><td><span class="fpen fpen-40">40% Shot</span></td></tr>
 
-      <tr><td>Rebuttal Match Loser</td><td><span class="fpen fpen-nd">Special Drink</span></td></tr>
+      <tr><td>The Newbie</td><td><span class="fpen fpen-nd">Special Drink</span></td></tr>
 
     </table>
 
@@ -1074,6 +1188,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 <!-- ════════════ SCORES ════════════ -->
 
 <div id="pg-scores" class="pg">
+
+
 
   <div class="slabel">&#127942; Overall Standings</div>
 
@@ -1121,7 +1237,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
         <span class="elec-lbl blue" id="elec-lbl-t1">0 pts</span>
 
-        <span class="elec-mid">&#9654; 12.5 to win &#9664;</span>
+        <span class="elec-mid">&#9654; 15.5 to win &#9664;</span>
 
         <span class="elec-lbl red" id="elec-lbl-t2">0 pts</span>
 
@@ -1132,6 +1248,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);
     </div>
 
   </div>
+
+
 
     <div class="slabel">&#9971; Round Scores</div>
   <div id="sc-rounds" style="padding:0 2px;">
@@ -1149,7 +1267,13 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 </div>
 
+
+
 </div><!-- /content -->
+
+
+
+
 
 <!-- ════════════════════════════
 
@@ -1193,7 +1317,11 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 
 </nav>
 
+
+
 <div id="toast">Copied!</div>
+
+
 
 <script>
 
@@ -1205,7 +1333,7 @@ let S = {
 
   players: {},
 
-  t1name: '🍺 Grip it & Sip It',
+  t1name: 'Team 1',
 
   t2name: '🚀 Hosel Rockets',
 
@@ -1213,11 +1341,13 @@ let S = {
 
   t2captain: 'Joey',
 
-  wifiSSID: 'HugeFlagPole',
+  wifiSSID: 'TMOBILE-2146',
 
-  wifiPW: 'america250'
+  wifiPW: 'sf7kb8v965d'
 
 };
+
+
 
 function load() {
 
@@ -1227,13 +1357,15 @@ function load() {
 
   // Always use latest hardcoded WiFi — overrides stale localStorage values
 
-  S.wifiSSID = 'HugeFlagPole';
+  S.wifiSSID = 'TMOBILE-2146';
 
-  S.wifiPW = 'america250';
+  S.wifiPW = 'sf7kb8v965d';
 
 }
 
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
+
+
 
 function go(name, btn) {
 
@@ -1252,6 +1384,8 @@ function go(name, btn) {
   if (name === 'scores') loadScores();
 
 }
+
+
 
 /* ── WIFI ── */
 
@@ -1302,6 +1436,8 @@ function fbCopy(t) {
 
 }
 
+
+
 /* ── TOAST ── */
 
 let toastTmr;
@@ -1318,10 +1454,13 @@ function showToast(msg) {
 
 }
 
+
+
+
+
 /* ── SCORES ── */
 const SHEET_URL = 'https://docs.google.com/spreadsheets/d/12cDVsKN2fxkWQHKeDJmxmaaRl7xm_denetahHychj2E/gviz/tq?tqx=out:csv&sheet=Scoreboard';
 const HCP_URL   = 'https://docs.google.com/spreadsheets/d/12cDVsKN2fxkWQHKeDJmxmaaRl7xm_denetahHychj2E/gviz/tq?tqx=out:csv&sheet=Handicaps';
-const HCP_CALC_URL = 'https://docs.google.com/spreadsheets/d/12cDVsKN2fxkWQHKeDJmxmaaRl7xm_denetahHychj2E/gviz/tq?tqx=out:csv&sheet=Handicap%20Calculator';
 const SHEET_MAP = ['d1','d2','d3','d5'];
 
 function parseSheetCSV(text) {
@@ -1376,31 +1515,6 @@ function fmt(v) {
   return isNaN(n) ? '—' : (n % 1 === 0 ? String(n) : n.toFixed(1));
 }
 
-function parseStrokeLookup(csvText) {
-  var rows = parseSheetCSV(csvText);
-  var lookup = {};
-  var curDay = null;
-  rows.forEach(function(row) {
-    if (row[1]) { var dm = row[1].match(/Day \d/); if (dm) curDay = dm[0]; }
-    var name = row[13] ? row[13].trim() : '';
-    var strokes = row[14] ? row[14].trim() : '';
-    if (curDay && name && strokes !== '' && strokes.toLowerCase() !== 'n/a' && !isNaN(strokes)) {
-      if (!lookup[curDay]) lookup[curDay] = {};
-      lookup[curDay][name] = parseInt(strokes, 10);
-    }
-  });
-  return lookup;
-}
-function applyStrokes(dayLabel, playerStr, strokeLookup) {
-  if (!playerStr.trim() || !strokeLookup || !strokeLookup[dayLabel]) return playerStr;
-  var ds = strokeLookup[dayLabel];
-  var key = playerStr.trim();
-  if (ds.hasOwnProperty(key)) return playerStr + ' <span class=\"hcp-badge\">(' + ds[key] + ')</span>';
-  return playerStr.split(' & ').map(function(p) {
-    var pt = p.trim();
-    return ds.hasOwnProperty(pt) ? p + ' <span class=\"hcp-badge\">(' + ds[pt] + ')</span>' : p;
-  }).join(' & ');
-}
 function loadScores() {
   var upd = document.getElementById('sc-updated');
   if (upd) upd.textContent = 'Refreshing…';
@@ -1411,18 +1525,15 @@ function loadScores() {
   fetchHandicaps();
 
   var DAY_META = {
-    'Day 1': {date:'Wed Aug 26', course:'Meadow Brook',    pts:'+2/match'},
-    'Day 2': {date:'Thu Aug 27', course:'Stonington CC',   pts:'+2/match'},
-    'Day 3': {date:'Fri Aug 28', course:'Shenecossett GC', pts:'+2/match'},
+    'Day 1': {date:'Wed Aug 26', course:'Meadow Brook',    pts:'+0.5/stroke (max 3)'},
+    'Day 2': {date:'Thu Aug 27', course:'Stonington CC',   pts:'+3/match'},
+    'Day 3': {date:'Fri Aug 28', course:'Shenecossett GC', pts:'+0.5/stroke (max 3)'},
     'Day 4': {date:'Mon Aug 31', course:'Meadow Brook',    pts:'+3/match'}
   };
 
-  Promise.all([
-    fetch(SHEET_URL + '&nocache=' + Date.now()).then(function(r){return r.text();}),
-    fetch(HCP_CALC_URL + '&nocache=' + Date.now()).then(function(r){return r.text();})
-  ]).then(function(results) {
-      var text = results[0];
-      var strokeLookup = parseStrokeLookup(results[1]);
+  fetch(SHEET_URL + '&nocache=' + Date.now())
+    .then(function(r) { return r.text(); })
+    .then(function(text) {
       var rows = parseSheetCSV(text);
       // cols: Day(0), Format(1), Match(2), T1Players(3), T1Pts(4), T2Players(5), T2Pts(6)
       // last row = totals (empty day + empty match)
@@ -1444,8 +1555,8 @@ function loadScores() {
         if (r[2] && (r[4] === '' || r[4] == null) && (r[6] === '' || r[6] == null)) unplayed++;
       });
       var totalAwarded = grandT1 + grandT2;
-      var totalPossible = 24; // 6 matches x2pts + 4 singles x3pts
-      var winThreshold = 12.5;
+      var totalPossible = totalAwarded + (unplayed * 3);
+      var winThreshold = Math.ceil((totalPossible / 2 + 0.01) * 2) / 2;
       var winLabel = fmt(winThreshold);
       // Bar fills proportionally to total possible (not just awarded)
       var t1w = Math.min((grandT1 / Math.max(totalPossible, 1)) * 100, 100);
@@ -1493,23 +1604,20 @@ function loadScores() {
         html += '</div>';
         html += '<div class="db-format">' + day.format + '</div>';
         if (meta.date) html += '<div class="db-meta">' + meta.date + ' · ' + meta.course + '</div>';
-        if (day.label === 'Day 4') html += '<div class="day-hcp-note">mulligans, not strokes</div>';
         html += '</div>';
         html += '<div class="db-body">';
 
-        day.matches.forEach(function(m, mIdx) {
+        day.matches.forEach(function(m) {
           var v1 = m.t1pts ? fmt(m.t1pts) : '—';
           var v2 = m.t2pts ? fmt(m.t2pts) : '—';
-          var t1pDisp = applyStrokes(day.label, m.t1p || '', strokeLookup);
-          var t2pDisp = applyStrokes(day.label, m.t2p || '', strokeLookup);
           html += '<div class="match-row">';
-          html += '<div class="match-players">' + t1pDisp + '</div>';
+          html += '<div class="match-players">' + (m.t1p || '') + '</div>';
           html += '<div class="match-score">';
           html += '<span class="ms-pts blue">' + v1 + '</span>';
           html += '<span class="ms-vs">vs</span>';
           html += '<span class="ms-pts red">' + v2 + '</span>';
           html += '</div>';
-          html += '<div class="match-players t2p">' + t2pDisp + '</div>';
+          html += '<div class="match-players t2p">' + (m.t2p || '') + '</div>';
           html += '</div>';
         });
 
@@ -1537,6 +1645,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   var _prompt = null;
 
+
+
   var ua = navigator.userAgent;
 
   var isStandalone = (window.navigator.standalone === true) ||
@@ -1545,9 +1655,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
   if (isStandalone) return;
 
+
+
   var isIOS    = /iPhone|iPad|iPod/.test(ua);
 
   var isSafari = /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS/.test(ua);
+
+
 
   // Android/Chrome: capture native install prompt
 
@@ -1563,6 +1677,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   });
 
+
+
   // iOS Safari (not already installed)
 
   if (isIOS && isSafari) {
@@ -1572,6 +1688,8 @@ document.addEventListener('DOMContentLoaded', function(){
     document.body.classList.add('a2hs-on');
 
   }
+
+
 
   var _modalEl = null;
 
@@ -1621,13 +1739,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
       + 'border-radius:12px;padding:12px 14px">'
 
-      + '<span style="font-size:1.5em;min-width:30px;text-align:center">1&#65039;&#8419;</span>'
+      + '<span class="fc-icon">1&#65039;&#8419;</span>'
 
-      + '<span style="font-size:0.88em;color:#334;line-height:1.4">Tap the '
+      + '<span class="fc-detail">Tap the '
 
-      + '<strong style="color:#b05800">Share</strong> button '
+      + '<strong style="color:var(--accent)">Share</strong> button '
 
-      + '<span style="display:inline-block;border:1.5px solid #b05800;border-radius:4px;'
+      + '<span style="display:inline-block;border:1.5px solid var(--accent);border-radius:4px;'
 
       + 'padding:0 4px;font-size:1.1em;line-height:1.3;vertical-align:middle">&#11014;</span>'
 
@@ -1641,11 +1759,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
       + 'border-radius:12px;padding:12px 14px">'
 
-      + '<span style="font-size:1.5em;min-width:30px;text-align:center">2&#65039;&#8419;</span>'
+      + '<span class="fc-icon">2&#65039;&#8419;</span>'
 
-      + '<span style="font-size:0.88em;color:#334;line-height:1.4">Scroll down and tap '
+      + '<span class="fc-detail">Scroll down and tap '
 
-      + '<strong style="color:#b05800">&ldquo;Add to Home Screen&rdquo;</strong></span>'
+      + '<strong style="color:var(--accent)">&ldquo;Add to Home Screen&rdquo;</strong></span>'
 
       + '</div>'
 
@@ -1655,11 +1773,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
       + 'border-radius:12px;padding:12px 14px">'
 
-      + '<span style="font-size:1.5em;min-width:30px;text-align:center">3&#65039;&#8419;</span>'
+      + '<span class="fc-icon">3&#65039;&#8419;</span>'
 
-      + '<span style="font-size:0.88em;color:#334;line-height:1.4">Tap '
+      + '<span class="fc-detail">Tap '
 
-      + '<strong style="color:#b05800">&ldquo;Add&rdquo;</strong> in the top-right corner</span>'
+      + '<strong style="color:var(--accent)">&ldquo;Add&rdquo;</strong> in the top-right corner</span>'
 
       + '</div>'
 
@@ -1682,6 +1800,8 @@ document.addEventListener('DOMContentLoaded', function(){
     document.body.appendChild(_modalEl);
 
   }
+
+
 
   window.showA2HS = function() {
 
@@ -1713,6 +1833,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   };
 
+
+
   window.closeA2HS = function() {
 
     var ov = document.getElementById('bws-install-overlay');
@@ -1720,6 +1842,8 @@ document.addEventListener('DOMContentLoaded', function(){
     if (ov) ov.style.display = 'none';
 
   };
+
+
 
   window.addEventListener('appinstalled', function() {
 
@@ -1731,6 +1855,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 
+
+
 /* ── INIT ── */
 
 load();
@@ -1741,11 +1867,17 @@ document.getElementById('wifi-pw-disp').textContent = S.wifiPW || 'TBD';
 
 </script>
 
+
+
 <div id="a2hs-bar">
 
   <button id="a2hs-btn" onclick="showA2HS()">&#128242; Add BW&amp;S to Home Screen</button>
 
 </div>
+
+
+
+
 
 <script>
 
@@ -1775,6 +1907,8 @@ document.getElementById('wifi-pw-disp').textContent = S.wifiPW || 'TBD';
 
 })();
 
+
+
 /* ── SERVICE WORKER ── */
 
 if ('serviceWorker' in navigator) {
@@ -1799,6 +1933,8 @@ if ('serviceWorker' in navigator) {
 
   }).catch(function(e) { console.log('SW reg failed:', e); });
 
+
+
   // When SW takes control (first install), reload for fresh content
 
   navigator.serviceWorker.addEventListener('controllerchange', function() {
@@ -1808,6 +1944,8 @@ if ('serviceWorker' in navigator) {
   });
 
 }
+
+
 
 /* ── STANDALONE REFRESH: reload after 5+ min in background ── */
 
@@ -1846,8 +1984,7 @@ if ('serviceWorker' in navigator) {
     { name: 'Accommodation',            lat: 41.3188, lng: -71.9997, color: '#2d6a4f', label: '🏠', days: 'Home base',           drive: null },
     { name: 'Meadow Brook Golf Club',   lat: 41.4948, lng: -71.6685, color: '#1d6fa4', label: '⛳', days: 'Days 1 & 4',           drive: '~30 min drive' },
     { name: 'Stonington Country Club',  lat: 41.3981, lng: -71.8896, color: '#1d6fa4', label: '⛳', days: 'Days 2 & Exhibition',  drive: '~20 min drive' },
-    { name: 'Shenecossett Golf Course', lat: 41.3317, lng: -72.0683, color: '#1d6fa4', label: '⛳', days: 'Day 3',                drive: '~15 min drive' },
-    { name: 'Norwich Golf Course',        lat: 41.5016, lng: -72.1034, color: '#7c3aed', label: '⛳', days: 'Saturday Backup',           drive: '~30 min drive' }
+    { name: 'Shenecossett Golf Course', lat: 41.3317, lng: -72.0683, color: '#1d6fa4', label: '⛳', days: 'Day 3',                drive: '~15 min drive' }
   ];
 
   function initMap() {
