@@ -1,5 +1,5 @@
 /* BW&S 2026 — Service Worker v3: always-fresh navigation */
-const CACHE = 'bws-2026-v6';
+const CACHE = 'bws-2026-v7';
 
 self.addEventListener('install', () => self.skipWaiting());
 
