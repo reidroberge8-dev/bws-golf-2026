@@ -1238,6 +1238,16 @@ function load() {
 
   S.wifiPW = 'america250';
 
+  // Always use latest hardcoded team names/captains — overrides stale localStorage values
+
+  S.t1name = '🍺 Grip it & Sip It';
+
+  S.t2name = '🚀 Hosel Rockets';
+
+  S.t1captain = 'Matty';
+
+  S.t2captain = 'Joey';
+
 }
 
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
